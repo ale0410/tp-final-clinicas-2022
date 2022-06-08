@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs/internal/Subject';
-//import { AuthenticationService } from 'src/app/shared/authentication-service';
+import { AutenticationService } from 'src/app/shared/autentication.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -16,8 +16,8 @@ export class NavBarComponent implements OnInit {
   esPac: boolean = false;
   public static updateUserStatus: Subject<boolean> = new Subject();
 
-  //constructor(public router: Router, public authService: AuthenticationService) {
-    constructor(public router: Router) {
+  constructor(public router: Router, public authService: AutenticationService) {
+    //constructor(public router: Router) {
     NavBarComponent.updateUserStatus.subscribe(res => {
       this.isLogged = true;
       let user: any = JSON.parse("localStorage.getItem('loggedUser')");
@@ -67,7 +67,7 @@ export class NavBarComponent implements OnInit {
     this.esAdmin = false;
     this.esPac = false;
     this.esEspec = false;
-    //this.authService.SignOut()
+    this.authService.SignOut();
   }
 
 }

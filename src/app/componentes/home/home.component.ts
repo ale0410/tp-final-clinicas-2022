@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs/internal/Subject';
-//import { AuthenticationService } from 'src/app/shared/authentication-service';
+import { AutenticationService } from 'src/app/shared/autentication.service';
 import { NavBarComponent } from '../nav-bar/nav-bar.component';
 
 @Component({
@@ -15,8 +15,8 @@ export class HomeComponent implements OnInit {
   esAdmin: boolean = false;
   public static updateUserStatus: Subject<boolean> = new Subject();
 
-  //constructor(public router: Router, public authService: AuthenticationService) {
-  constructor(public router: Router) {
+  constructor(public router: Router, public authService: AutenticationService) {
+  //constructor(public router: Router) {
     NavBarComponent.updateUserStatus.subscribe(res => {
       this.isLogged = true;
       let user: any = JSON.parse("localStorage.getItem('loggedUser')");
@@ -40,5 +40,7 @@ export class HomeComponent implements OnInit {
     }
 
   }
+
+  //6 botones, 3 para paciente, 2 para especialistas, 1 para admin, pero primero hay que registrarse y elegir si es especialista o usuario
 
 }
