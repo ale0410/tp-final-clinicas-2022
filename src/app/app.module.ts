@@ -31,6 +31,11 @@ import { FiltroEspecialidadesPipe } from './pipes/filtro-especialidades.pipe';
 import { FiltroEspecialistasPipe } from './pipes/filtro-especialistas.pipe';
 import { FiltroMixtoEspecialidadPacientePipe } from './pipes/filtro-mixto-especialidad-paciente.pipe';
 import { RespuestaBooleanoPipe } from './pipes/respuesta-booleano.pipe';
+import { TurnosComponent } from './componentes/turnos/turnos.component';
+import { AltaTurnosComponent } from './componentes/alta-turnos/alta-turnos.component';
+import { ListaEspecialistasComponent } from './componentes/lista-especialistas/lista-especialistas.component';
+import { ListaEspecialidadesComponent } from './componentes/lista-especialidades/lista-especialidades.component';
+import { ListaPacientesComponent } from './componentes/lista-pacientes/lista-pacientes.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +59,12 @@ import { RespuestaBooleanoPipe } from './pipes/respuesta-booleano.pipe';
     FiltroEspecialidadesPipe,
     FiltroEspecialistasPipe,
     FiltroMixtoEspecialidadPacientePipe,
-    RespuestaBooleanoPipe
+    RespuestaBooleanoPipe,
+    TurnosComponent,
+    AltaTurnosComponent,
+    ListaEspecialistasComponent,
+    ListaEspecialidadesComponent,
+    ListaPacientesComponent
   ],
   imports: [
     BrowserModule,
