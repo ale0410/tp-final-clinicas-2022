@@ -8,9 +8,9 @@ import { AuthGuard } from './servicios/auth.guard';
 import { MisTurnosComponent } from './componentes/mis-turnos/mis-turnos.component';
 import { TurnosComponent } from './componentes/turnos/turnos.component';
 import { AltaTurnosComponent } from './componentes/alta-turnos/alta-turnos.component';
+import { MiPerfilComponent } from './componentes/mi-perfil/mi-perfil.component';
 /*
 import { InformesComponent } from './componentes/informes/informes.component';
-import { MiPerfilComponent } from './componentes/mi-perfil/mi-perfil.component';
 import { PacientesComponent } from './componentes/pacientes/pacientes.component';
 import { SeccionUsuariosComponent } from './componentes/seccion-usuarios/seccion-usuarios.component';
 import { EspecAuthGuard } from './servicios/espec-auth.guard';*/
@@ -37,10 +37,10 @@ const routes: Routes = [
   {
     path: 'solicitar-turno', component: AltaTurnosComponent, canActivate: [AuthGuard]
   },
-  /*
   {
     path: 'mi-perfil', component: MiPerfilComponent
   },
+  /*
   {
     path: 'pacientes', component: PacientesComponent
   },

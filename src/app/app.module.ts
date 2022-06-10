@@ -36,6 +36,10 @@ import { AltaTurnosComponent } from './componentes/alta-turnos/alta-turnos.compo
 import { ListaEspecialistasComponent } from './componentes/lista-especialistas/lista-especialistas.component';
 import { ListaEspecialidadesComponent } from './componentes/lista-especialidades/lista-especialidades.component';
 import { ListaPacientesComponent } from './componentes/lista-pacientes/lista-pacientes.component';
+import { MiPerfilComponent } from './componentes/mi-perfil/mi-perfil.component';
+import { DetalleUsuarioComponent } from './componentes/detalle-usuario/detalle-usuario.component';
+import { DetalleHistoriaClinicaComponent } from './componentes/detalle-historia-clinica/detalle-historia-clinica.component';
+import { HorariosComponent } from './componentes/horarios/horarios.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +68,11 @@ import { ListaPacientesComponent } from './componentes/lista-pacientes/lista-pac
     AltaTurnosComponent,
     ListaEspecialistasComponent,
     ListaEspecialidadesComponent,
-    ListaPacientesComponent
+    ListaPacientesComponent,
+    MiPerfilComponent,
+    DetalleUsuarioComponent,
+    DetalleHistoriaClinicaComponent,
+    HorariosComponent
   ],
   imports: [
     BrowserModule,
