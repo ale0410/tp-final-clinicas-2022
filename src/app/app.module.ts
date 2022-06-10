@@ -43,6 +43,7 @@ import { HorariosComponent } from './componentes/horarios/horarios.component';
 import { PacientesComponent } from './componentes/pacientes/pacientes.component';
 import { SeccionUsuariosComponent } from './componentes/seccion-usuarios/seccion-usuarios.component';
 import { TablaUsuariosComponent } from './componentes/tabla-usuarios/tabla-usuarios.component';
+import { InformesComponent } from './componentes/informes/informes.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { TablaUsuariosComponent } from './componentes/tabla-usuarios/tabla-usuar
     HorariosComponent,
     PacientesComponent,
     SeccionUsuariosComponent,
-    TablaUsuariosComponent
+    TablaUsuariosComponent,
+    InformesComponent
   ],
   imports: [
     BrowserModule,

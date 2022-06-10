@@ -11,9 +11,9 @@ import { AltaTurnosComponent } from './componentes/alta-turnos/alta-turnos.compo
 import { MiPerfilComponent } from './componentes/mi-perfil/mi-perfil.component';
 import { PacientesComponent } from './componentes/pacientes/pacientes.component';
 import { SeccionUsuariosComponent } from './componentes/seccion-usuarios/seccion-usuarios.component';
-/*
+import { EspecAuthGuard } from './servicios/espec-auth.guard';
 import { InformesComponent } from './componentes/informes/informes.component';
-import { EspecAuthGuard } from './servicios/espec-auth.guard';*/
+
 
 const routes: Routes = [
   {
@@ -32,7 +32,11 @@ const routes: Routes = [
     path: 'mis-turnos', component: MisTurnosComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'turnos', component: TurnosComponent, canActivate: [AdminAuthGuard]
+    path: 'turnos', component: TurnosComponent, canActivate: [AdminAuthGuard] //Para cuando quiero sacar un turno, primero mostrar botones con todos los profesionales que sean redondos
+                                                                              //Y arriba de cada boton el nombre del médico
+                                                                              //Cuando hago click tengo que mostrar otros botones con las especialidades del médico que seleccioné
+                                                                              //cuando clickeo en la especialidad muestro los botones con los dias disponibles del medico
+                                                                              //botones con las horas disponibles
   },
   {
     path: 'solicitar-turno', component: AltaTurnosComponent, canActivate: [AuthGuard]
@@ -46,13 +50,12 @@ const routes: Routes = [
   {
     path: 'seccion-usuarios', component: SeccionUsuariosComponent, canActivate: [AdminAuthGuard]
   },
-  /*
   {
     path: 'pacientes', component: PacientesComponent, canActivate: [EspecAuthGuard]
   },
   {
     path: 'informes', component: InformesComponent, canActivate: [AdminAuthGuard]
-  }*/
+  }
 ];
 
 @NgModule({
