@@ -40,6 +40,9 @@ import { MiPerfilComponent } from './componentes/mi-perfil/mi-perfil.component';
 import { DetalleUsuarioComponent } from './componentes/detalle-usuario/detalle-usuario.component';
 import { DetalleHistoriaClinicaComponent } from './componentes/detalle-historia-clinica/detalle-historia-clinica.component';
 import { HorariosComponent } from './componentes/horarios/horarios.component';
+import { PacientesComponent } from './componentes/pacientes/pacientes.component';
+import { SeccionUsuariosComponent } from './componentes/seccion-usuarios/seccion-usuarios.component';
+import { TablaUsuariosComponent } from './componentes/tabla-usuarios/tabla-usuarios.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +75,10 @@ import { HorariosComponent } from './componentes/horarios/horarios.component';
     MiPerfilComponent,
     DetalleUsuarioComponent,
     DetalleHistoriaClinicaComponent,
-    HorariosComponent
+    HorariosComponent,
+    PacientesComponent,
+    SeccionUsuariosComponent,
+    TablaUsuariosComponent
   ],
   imports: [
     BrowserModule,

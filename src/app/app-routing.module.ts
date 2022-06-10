@@ -9,10 +9,10 @@ import { MisTurnosComponent } from './componentes/mis-turnos/mis-turnos.componen
 import { TurnosComponent } from './componentes/turnos/turnos.component';
 import { AltaTurnosComponent } from './componentes/alta-turnos/alta-turnos.component';
 import { MiPerfilComponent } from './componentes/mi-perfil/mi-perfil.component';
-/*
-import { InformesComponent } from './componentes/informes/informes.component';
 import { PacientesComponent } from './componentes/pacientes/pacientes.component';
 import { SeccionUsuariosComponent } from './componentes/seccion-usuarios/seccion-usuarios.component';
+/*
+import { InformesComponent } from './componentes/informes/informes.component';
 import { EspecAuthGuard } from './servicios/espec-auth.guard';*/
 
 const routes: Routes = [
@@ -40,13 +40,13 @@ const routes: Routes = [
   {
     path: 'mi-perfil', component: MiPerfilComponent
   },
-  /*
   {
     path: 'pacientes', component: PacientesComponent
   },
   {
     path: 'seccion-usuarios', component: SeccionUsuariosComponent, canActivate: [AdminAuthGuard]
   },
+  /*
   {
     path: 'pacientes', component: PacientesComponent, canActivate: [EspecAuthGuard]
   },
