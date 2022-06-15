@@ -8,13 +8,16 @@ import { Especialista } from 'src/app/clases/especialista';
 import { EspecialidadService } from 'src/app/servicios/especialidad.service';
 import { EspecialistaService } from 'src/app/servicios/especialista.service';
 import { AutenticationService } from 'src/app/shared/autentication.service';
-//import { IDropdownSettings, } from 'ng-multiselect-dropdown';
+import { IDropdownSettings, } from 'ng-multiselect-dropdown';
+
 
 @Component({
   selector: 'app-registro-especialista',
   templateUrl: './registro-especialista.component.html',
   styleUrls: ['./registro-especialista.component.css']
+  
 })
+
 export class RegistroEspecialistaComponent implements OnInit {
 
   formAltaEspecialista: FormGroup;
@@ -22,7 +25,7 @@ export class RegistroEspecialistaComponent implements OnInit {
   fotoUrl = '';
   task!: AngularFireUploadTask;
   listaEspecialidades: Especialidad[] = [];
-  //dropdownSettings: IDropdownSettings = {};
+  dropdownSettings: IDropdownSettings = {};
   agrEspecialidad: boolean = false;
   agrEspBtn: string = 'Agregar Especialidad';
 
@@ -129,10 +132,10 @@ export class RegistroEspecialistaComponent implements OnInit {
         listadoEspecialidadesCombobox.push(new Especialidad(especialidad.payload.doc.data().nombre))
       }
       this.listaEspecialidades = listadoEspecialidadesCombobox;
-      /*this.dropdownSettings = {
+      this.dropdownSettings = {
         idField: 'nombre',
         textField: 'nombre'
-      };*/
+      };
     });
   }
 

@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
   //constructor(public router: Router) {
     NavBarComponent.updateUserStatus.subscribe(res => {
       this.isLogged = true;
-      let user: any = JSON.parse("localStorage.getItem('loggedUser')");
+      let user: any = JSON.stringify(localStorage.getItem('loggedUser'));
       if (user.tipo == 'administrador') {
         this.esAdmin = true;
       }
@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let user: any = JSON.parse("localStorage.getItem('loggedUser')");
+    let user: any = JSON.stringify(localStorage.getItem('loggedUser'));
 
     if (user) {
       this.isLogged = true;

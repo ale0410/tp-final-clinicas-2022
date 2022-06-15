@@ -45,9 +45,6 @@ const routes: Routes = [
     path: 'mi-perfil', component: MiPerfilComponent
   },
   {
-    path: 'pacientes', component: PacientesComponent
-  },
-  {
     path: 'seccion-usuarios', component: SeccionUsuariosComponent, canActivate: [AdminAuthGuard]
   },
   {

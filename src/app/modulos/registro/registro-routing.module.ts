@@ -17,7 +17,7 @@ const routes: Routes = [
     path: 'verify-email', component: VerifyEmailComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'administrador', component: RegistroAdministradorComponent, canActivate: [AdminAuthGuard]
+    path: 'administrador', component: RegistroAdministradorComponent//, canActivate: [AdminAuthGuard]
   },
   {
     path: 'paciente', component: RegistroPacienteComponent
