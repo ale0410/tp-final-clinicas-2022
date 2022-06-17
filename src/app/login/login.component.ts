@@ -114,7 +114,7 @@ export class LoginComponent implements OnInit {
   }
 
   logInPaciente() {
-    let cuenta: any = JSON.stringify(localStorage.getItem('user'));
+    let cuenta: any = JSON.parse(localStorage.getItem('user') || "");
     let user = this.pacienteService.getPaciente(this.email).subscribe((usuarios: any) => {
       if (usuarios[0] != null) {
         if (cuenta.emailVerified) {
@@ -135,7 +135,7 @@ export class LoginComponent implements OnInit {
   }
 
   logInEspecialista() {
-    let cuenta: any = JSON.stringify(localStorage.getItem('user'));
+    let cuenta: any = JSON.parse(localStorage.getItem('user') || "");
     let user = this.especialistaService.getEspecialista(this.email).subscribe((usuarios: any) => {
       if (usuarios[0] != null) {
         if (cuenta.emailVerified) {
@@ -191,7 +191,7 @@ export class LoginComponent implements OnInit {
   }
 
   userIsLogged() {
-    return JSON.stringify(localStorage.getItem('user'));
+    return JSON.parse(localStorage.getItem('user') || "");
 
   }
 

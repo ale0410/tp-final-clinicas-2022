@@ -11,7 +11,7 @@ export class AdminAuthGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    let loggedUser: any = JSON.stringify(localStorage.getItem('loggedUser'));
+    let loggedUser: any = JSON.parse(localStorage.getItem('loggedUser') || "");
 
     if (loggedUser && loggedUser.tipo == 'administrador') {
       return true;

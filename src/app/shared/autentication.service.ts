@@ -16,7 +16,7 @@ export class AutenticationService {
     //public toastr: ToastrService,
     public ngFireAuth: AngularFireAuth,
     public router: Router,
-    public ngZone: NgZone
+    public ngZone: NgZone, 
   ) {
      this.ngFireAuth.authState.subscribe(user => {
        if (user) {
@@ -42,10 +42,10 @@ export class AutenticationService {
 
   // Email verification when new user register
   async SendVerificationMail() {
-    /*return (await this.ngFireAuth.currentUser).sendEmailVerification()
+    return (await this.ngFireAuth.currentUser)?.sendEmailVerification()
       .then(() => {
         this.router.navigate(['registro/verify-email']);
-      })*/
+      })
   }
 
   // Recover password
@@ -60,14 +60,14 @@ export class AutenticationService {
 
   // Returns true when user is looged in
   get isLoggedIn(): boolean {
-    const user = JSON.parse(this.userData);
-    const loggedUser = JSON.parse(user);
+    const user = JSON.parse(localStorage.getItem('user') || "");
+    const loggedUser = JSON.parse(localStorage.getItem('loggedUser') || "");
     return (user !== null && ((user.emailVerified !== false) || (loggedUser !== null && loggedUser.tipo == 'administrador'))) ? true : false;
   }
 
   // Returns true when user's email is verified
   get isEmailVerified(): boolean {
-    const user = JSON.parse(this.userData);
+    const user = JSON.parse(localStorage.getItem('user') || "");
     return (user.emailVerified !== false) ? true : false;
   }
 

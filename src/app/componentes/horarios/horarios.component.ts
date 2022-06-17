@@ -48,7 +48,7 @@ export class HorariosComponent implements OnInit {
 
   arrayEspecialidades: Especialidad[] = [];
   filter: string = '';
-  especialista: any = JSON.stringify(localStorage.getItem('loggedUser'));
+  especialista: any = JSON.parse(localStorage.getItem('loggedUser') || "");
   especialidadSeleccionada: Especialidad = new Especialidad('');
   listaDias: string[] = ["domingo", "lunes", "martes", "miercoles", "jueves", "viernes", "sabado"]
   listaFranjas: Franja[] = []

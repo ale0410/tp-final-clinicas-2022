@@ -35,7 +35,7 @@ export class DetalleHistoriaClinicaComponent implements OnInit {
   arrayHistoriasClinicas: HistoriaClinica[] = [];
   @Input() pacienteSeleccionado!: Paciente;
   @Input() especialistaSeleccionado!: Especialista;
-  user: any = JSON.stringify(localStorage.getItem('loggedUser'));
+  user: any = JSON.parse(localStorage.getItem('loggedUser') || "");
   public visible: boolean = true;
 
   constructor(public historiasService: HistoriasClinicasService) { }

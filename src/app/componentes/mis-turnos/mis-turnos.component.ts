@@ -15,7 +15,7 @@ export class MisTurnosComponent implements OnInit {
   constructor(public authService: AutenticationService) { }
 
   ngOnInit() {
-    let user: any = JSON.stringify(localStorage.getItem('loggedUser'));
+    let user: any = JSON.parse(localStorage.getItem('loggedUser') || "");
     if (user) {
       if (user.tipo == "administrador") {
         this.esAdmin = true;

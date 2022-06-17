@@ -14,7 +14,7 @@ export class PacientesComponent implements OnInit {
   arrayMisPacientes: Paciente[] = [];
   arrayMailsPacientes: string[] = [];
   filter: string = '';
-  user: any = JSON.stringify(localStorage.getItem('loggedUser'));
+  user: any = JSON.parse(localStorage.getItem('loggedUser') || "");
 
 
 

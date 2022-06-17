@@ -23,7 +23,7 @@ export class RegistroComponent implements OnInit {
 
   ngOnInit() {
     if (this.authService.isLoggedIn) {
-      let user: any = JSON.stringify(localStorage.getItem('loggedUser'));
+      let user: any = JSON.parse(localStorage.getItem('loggedUser') || "");
       if (user.tipo == "administrador") {
         this.esAdmin = true;
       }

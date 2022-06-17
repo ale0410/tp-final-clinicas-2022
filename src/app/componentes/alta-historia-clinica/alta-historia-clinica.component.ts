@@ -43,7 +43,7 @@ export class AltaHistoriaClinicaComponent implements OnInit {
   }
 
   guardarHistoriaClinica() {
-    let especialista: any = JSON.stringify(localStorage.getItem('loggedUser'));
+    let especialista: any = JSON.parse(localStorage.getItem('loggedUser') || "");
     let pacienteMail = this.paciente;
     let altura = this.formAltaHistoria.controls['altura'].value;
     let peso = this.formAltaHistoria.controls['peso'].value;

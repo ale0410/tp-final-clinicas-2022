@@ -1,6 +1,7 @@
 {
   "hosting": [
     {
+      "target": "tp-final-clinicas-2022",
       "public": "public",
       "ignore": [
         "firebase.json",

@@ -24,7 +24,7 @@ export class MiPerfilComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let user: any = JSON.stringify(localStorage.getItem('loggedUser'));
+    let user: any = JSON.parse(localStorage.getItem('loggedUser') || "");
     if (user.tipo == 'administrador') {
       this.administrador = user;
     } else if (user.tipo == 'especialista') {

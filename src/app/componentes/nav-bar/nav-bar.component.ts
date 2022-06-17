@@ -20,7 +20,7 @@ export class NavBarComponent implements OnInit {
     //constructor(public router: Router) {
     NavBarComponent.updateUserStatus.subscribe(res => {
       this.isLogged = true;
-      let user: any = JSON.stringify(localStorage.getItem('loggedUser'));
+      let user: any = JSON.parse(localStorage.getItem('loggedUser') || "");
       if (user.tipo == "administrador") {
         this.esAdmin = true;
         this.esEspec = false;
@@ -38,7 +38,7 @@ export class NavBarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let user: any = JSON.stringify(localStorage.getItem('loggedUser'));
+    let user: any = JSON.parse(localStorage.getItem('loggedUser') || "");
 
     if (user) {
       this.isLogged = true;

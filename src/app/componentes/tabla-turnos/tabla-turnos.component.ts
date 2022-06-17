@@ -30,7 +30,7 @@ export class TablaTurnosComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    let loggedUser = JSON.parse(this.tipoUsuario);
+    let loggedUser = JSON.parse(localStorage.getItem('loggedUser') || "");
     if (this.tipoUsuario == 'especialista') {
       this.turnosService.getTurnosByEspecialista(loggedUser.mail).subscribe((turnos: any) => {
         let listaTurnosEspecialista: Turno[] = [];

@@ -16,7 +16,7 @@ export class DetalleUsuarioComponent implements OnInit {
   @Input() especialista!: Especialista;
   @Input() paciente!: Paciente;
   @Input() arrayTurnosPaciente: Turno[] = [];
-  user: any = JSON.stringify(localStorage.getItem('loggedUser'));
+  user: any = JSON.parse(localStorage.getItem('loggedUser') || "");
 
 
 
