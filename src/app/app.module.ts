@@ -47,6 +47,12 @@ import { PacientesComponent } from './componentes/pacientes/pacientes.component'
 import { SeccionUsuariosComponent } from './componentes/seccion-usuarios/seccion-usuarios.component';
 import { TablaUsuariosComponent } from './componentes/tabla-usuarios/tabla-usuarios.component';
 import { InformesComponent } from './componentes/informes/informes.component';
+import { AdministradorService } from './servicios/administrador.service';
+import { PacienteService } from './servicios/paciente.service';
+import { EspecialistaService } from './servicios/especialista.service';
+import { EspecialidadService } from './servicios/especialidad.service';
+import { AutenticationService } from './shared/autentication.service';
+import { LogService } from './servicios/log.service';
 
 @NgModule({
   declarations: [
@@ -96,6 +102,12 @@ import { InformesComponent } from './componentes/informes/informes.component';
     AngularFireStorageModule,
     FormsModule,
     ReactiveFormsModule,
+    AdministradorService,
+    PacienteService,
+    EspecialistaService,
+    EspecialidadService,
+    AutenticationService,
+    LogService,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore())

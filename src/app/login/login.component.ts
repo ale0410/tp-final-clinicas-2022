@@ -161,13 +161,13 @@ export class LoginComponent implements OnInit {
   }
 
   cargarAdmin() {
-    this.email = "ale23989@gmail.com";
-    this.password = "Sonic2022#";
+    this.email = "ale23989@gmail.com"; //Las animaciones tienen que tener dos transiciones, desde arriba hacia abajo
+    this.password = "Sonic2022#";      //En Mi Perfil cuando entro como paciente puedo entrar mi historia clinica en un excel y descargarlo como pdf
   }
 
   cargarPaciente1() {
-    this.email = "majomartinez04@gmail.com";
-    this.password = "Majo1965#";
+    this.email = "majomartinez04@gmail.com"; //En la seccion usuarios cuando entro como administrador, descargar todos los usuarios
+    this.password = "Majo1965#";             //Y si hago click me baja un excel con todos los turnos de los usuarios.
   }
 
   cargarPaciente2() {
