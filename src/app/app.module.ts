@@ -102,17 +102,18 @@ import { LogService } from './servicios/log.service';
     AngularFireStorageModule,
     FormsModule,
     ReactiveFormsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore())
+  ],
+  providers: [
     AdministradorService,
     PacienteService,
     EspecialistaService,
     EspecialidadService,
     AutenticationService,
     LogService,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAuth(() => getAuth()),
-    provideFirestore(() => getFirestore())
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
