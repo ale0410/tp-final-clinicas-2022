@@ -8,7 +8,7 @@ import { Especialista } from 'src/app/clases/especialista';
 import { EspecialidadService } from 'src/app/servicios/especialidad.service';
 import { EspecialistaService } from 'src/app/servicios/especialista.service';
 import { AutenticationService } from 'src/app/shared/autentication.service';
-import { IDropdownSettings, } from 'ng-multiselect-dropdown';
+import { IDropdownSettings } from 'ng-multiselect-dropdown';
 
 
 @Component({

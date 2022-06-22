@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { CommonModule, DatePipe } from '@angular/common';
+import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,7 +12,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFireStorage, AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { NavBarComponent } from './componentes/nav-bar/nav-bar.component';
 import { HomeComponent } from './componentes/home/home.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
@@ -53,6 +56,10 @@ import { EspecialistaService } from './servicios/especialista.service';
 import { EspecialidadService } from './servicios/especialidad.service';
 import { AutenticationService } from './shared/autentication.service';
 import { LogService } from './servicios/log.service';
+import { TurnosService } from './servicios/turnos.service';
+import { HistoriasClinicasService } from './servicios/historias-clinicas.service';
+import { Router } from '@angular/router';
+import { DisponibilidadEspecialistaService } from './servicios/disponibilidad-especialista.service';
 
 @NgModule({
   declarations: [
@@ -102,6 +109,10 @@ import { LogService } from './servicios/log.service';
     AngularFireStorageModule,
     FormsModule,
     ReactiveFormsModule,
+    NgMultiSelectDropDownModule.forRoot(),
+    CommonModule,
+    RecaptchaModule,
+    RecaptchaFormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore())
@@ -113,6 +124,12 @@ import { LogService } from './servicios/log.service';
     EspecialidadService,
     AutenticationService,
     LogService,
+    PacienteService,
+    TurnosService,
+    HistoriasClinicasService,
+    AutenticationService,
+    DisponibilidadEspecialistaService,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

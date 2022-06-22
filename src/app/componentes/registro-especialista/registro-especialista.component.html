@@ -47,9 +47,10 @@
                     <div class="col-sm-6">
                         <label for="especialidades">Especialidades</label>
 
-                        <!--<ng-multiselect-dropdown [settings]="dropdownSettings" [data]="listaEspecialidades"
+                        <ng-multiselect-dropdown [settings]="dropdownSettings" [data]="listaEspecialidades"
                             formControlName="especialidades">
-                        </ng-multiselect-dropdown>-->
+                        </ng-multiselect-dropdown>
+
                         <span class="text-danger"
                             *ngIf="formAltaEspecialista.get('especialidades')?.hasError('required') && formAltaEspecialista.get('especialidades')?.touched">Debe
                             seleccionar al menos una especialidad.</span>

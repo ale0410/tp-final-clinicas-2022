@@ -98,7 +98,7 @@ export class DetalleTurnoComponent implements OnInit {
     }
     this.turnosService.cambiarEstadoTurno(turno)
     this.turnoSeleccionado.estado = turno.estado;
-    //this.estadoSeleccionado = null;
+    this.estadoSeleccionado == null;
     this.turnoCambioEstado = false;
     this.mensajeBotonCambiarEstadoTurno = "Modificar estado";
   }

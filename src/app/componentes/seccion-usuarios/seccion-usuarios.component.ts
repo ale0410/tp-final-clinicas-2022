@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Administrador } from 'src/app/clases/administrador';
+import { Especialidad } from 'src/app/clases/especialidad';
 import { Especialista } from 'src/app/clases/especialista';
 import { Paciente } from 'src/app/clases/paciente';
 import { Turno } from 'src/app/clases/turno';
@@ -50,14 +51,14 @@ export class SeccionUsuariosComponent implements OnInit {
   }
 
   limpiar() {
-    if (this.administrador != null) {
-      //this.administrador = null;
+    if (this.administrador !== null) {
+      this.administrador == null;
     }
-    if (this.especialista != null) {
-      //this.especialista = null;
+    if (this.especialista !== null) {
+      this.especialista == null;
     }
-    if (this.paciente != null) {
-      //this.paciente = null;
+    if (this.paciente !== null) {
+      this.paciente == null;
     }
     this.arrayPacientes = [];
   }

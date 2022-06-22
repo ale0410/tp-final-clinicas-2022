@@ -24,6 +24,7 @@
     "html2canvas": "^1.4.1",
     "jspdf": "^2.5.1",
     "ng-multiselect-dropdown": "^0.3.8",
+    "ng-recaptcha": "^9.0.0",
     "ngx-toastr": "^14.3.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

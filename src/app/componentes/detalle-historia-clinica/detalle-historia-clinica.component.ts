@@ -50,7 +50,7 @@ export class DetalleHistoriaClinicaComponent implements OnInit {
           historiasParaMostrar.push(historia);
         }
         this.arrayHistoriasClinicas = historiasParaMostrar.sort(function (a, b) {
-          return a.valor1 - b.valor1;
+          return a.temperatura - b.temperatura;
         });
         buscadorHistorias.unsubscribe();
       })
@@ -67,7 +67,7 @@ export class DetalleHistoriaClinicaComponent implements OnInit {
           historiasParaMostrar.push(historia);
         }
         this.arrayHistoriasClinicas = historiasParaMostrar.sort(function (a, b) {
-          return a.valor1 - b.valor1;
+          return a.temperatura - b.temperatura;
         });
         buscadorHistorias.unsubscribe();
 
@@ -94,7 +94,7 @@ export class DetalleHistoriaClinicaComponent implements OnInit {
   }
 
   verTodas() {
-    //this.especialistaSeleccionado = null;
+    this.especialistaSeleccionado == null;
     this.ngOnInit();
   }
 
