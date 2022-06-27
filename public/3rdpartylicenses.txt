@@ -581,6 +581,8 @@ firebase/compat/storage
 
 firebase/firestore
 
+firebase/firestore/lite
+
 firebase/messaging
 
 firebase/remote-config
