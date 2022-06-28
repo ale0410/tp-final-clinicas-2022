@@ -6,6 +6,7 @@ import { getFirestore, collection, getDocs, Firestore } from 'firebase/firestore
 // Follow this pattern to import other Firebase services
 // import { } from 'firebase/<service>';
 import { getDatabase } from "firebase/database";
+import { environment } from 'src/environments/environment';
 
 const firebaseConfig = {
   // ...
@@ -14,12 +15,12 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-//const app = initializeApp(firebaseConfig);
-//const db = getFirestore(app);
+const app = initializeApp(environment.firebase);
+const db = getFirestore(app);
   
   
 // Initialize Realtime Database and get a reference to the service
-//const database = getDatabase(app);
+const database = getDatabase(app);
 
 // Get a list of cities from your database
 async function getCities(db: Firestore) {
