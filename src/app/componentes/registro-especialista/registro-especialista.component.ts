@@ -6,9 +6,11 @@ import { Router } from '@angular/router';
 import { Especialidad } from 'src/app/clases/especialidad';
 import { Especialista } from 'src/app/clases/especialista';
 import { EspecialidadService } from 'src/app/servicios/especialidad.service';
+import { DiaService } from 'src/app/servicios/dia.service';
 import { EspecialistaService } from 'src/app/servicios/especialista.service';
 import { AutenticationService } from 'src/app/shared/autentication.service';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import { Dias } from 'src/app/clases/dias';
 
 
 @Component({
@@ -25,12 +27,16 @@ export class RegistroEspecialistaComponent implements OnInit {
   fotoUrl = '';
   task!: AngularFireUploadTask;
   listaEspecialidades: Especialidad[] = [];
+  listaDias: Dias[] = [];
   dropdownSettings: IDropdownSettings = {};
   agrEspecialidad: boolean = false;
+  agrDia: boolean = false;
   agrEspBtn: string = 'Agregar Especialidad';
+  agrDiaBtn: string = 'Agregar Día';
 
   constructor(
     public especialistaService: EspecialistaService,
+    public diaService: DiaService,
     public authService: AutenticationService,
     public router: Router,
     //public toastr: ToastrService,
@@ -46,12 +52,15 @@ export class RegistroEspecialistaComponent implements OnInit {
       apellido: ["", Validators.required],
       edad: ["", Validators.required],
       especialidades: [[], Validators.required],
+      dias: [[], Validators.required],
+      fecha: ["", Validators.required],
       foto: [null, Validators.required],
     })
   }
 
   ngOnInit() {
-    this.fillListaEspecialidades()
+    this.fillListaEspecialidades(),
+    this.fillListaDias()
   }
 
   signUp() {
@@ -75,8 +84,10 @@ export class RegistroEspecialistaComponent implements OnInit {
     let mail = this.formAltaEspecialista.controls['mail'].value;
     let password = this.formAltaEspecialista.controls['password'].value;
     let especialidades = this.formAltaEspecialista.controls['especialidades'].value;
+    let dias = this.formAltaEspecialista.controls['dias'].value;
+    let fecha = this.formAltaEspecialista.controls['fecha'].value;
     let fotoUrl = this.fotoUrl;
-    let especialista = new Especialista(nombre, apellido, edad, dni, especialidades, mail, password, fotoUrl, false);
+    let especialista = new Especialista(nombre, apellido, edad, dni, especialidades, dias, fecha, mail, password, fotoUrl, false);
     this.especialistaService.guardarEspecialista(especialista).then(resp => {
       this.showSuccess();
     }).catch((error) => {
@@ -117,10 +128,28 @@ export class RegistroEspecialistaComponent implements OnInit {
     }
   }
 
+  activarAgregadoDia() {
+    if (this.agrDia == false) {
+      this.agrDia = true;
+      this.agrDiaBtn = 'Cerrar'
+    }
+    else {
+      this.agrDia = false;
+      this.agrDiaBtn = 'Agregar Dia'
+    }
+  }
+
   agregarNuevaEspecialidad(nuevaEspecialidad: string) {
     if (nuevaEspecialidad != '') {
       let especialidad = new Especialidad(nuevaEspecialidad);
       this.especialidadService.guardarEspecialidad(especialidad);
+    }
+  }
+
+  agregarNuevoDia(nuevoDia: string) {
+    if (nuevoDia != '') {
+      let dia = new Dias(nuevoDia);
+      this.diaService.guardarDia(dia);
     }
   }
 
@@ -135,6 +164,21 @@ export class RegistroEspecialistaComponent implements OnInit {
       this.dropdownSettings = {
         idField: 'nombre',
         textField: 'nombre'
+      };
+    });
+  }
+
+  fillListaDias() {
+    this.diaService.dias.subscribe((dias: any) => {
+      let listadoDiasCombobox: Dias[] = [];
+      for (let index = 0; index < dias.length; index++) {
+        const dia = dias[index];
+        listadoDiasCombobox.push(new Dias(dia.payload.doc.data().dia))
+      }
+      this.listaDias = listadoDiasCombobox;
+      this.dropdownSettings = {
+        idField: 'dia',
+        textField: 'dia'
       };
     });
   }

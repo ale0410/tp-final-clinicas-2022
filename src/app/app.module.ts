@@ -60,6 +60,7 @@ import { TurnosService } from './servicios/turnos.service';
 import { HistoriasClinicasService } from './servicios/historias-clinicas.service';
 import { Router } from '@angular/router';
 import { DisponibilidadEspecialistaService } from './servicios/disponibilidad-especialista.service';
+import { DiaService } from './servicios/dia.service';
 
 @NgModule({
   declarations: [
@@ -121,6 +122,7 @@ import { DisponibilidadEspecialistaService } from './servicios/disponibilidad-es
     AdministradorService,
     PacienteService,
     EspecialistaService,
+    DiaService,
     EspecialidadService,
     AutenticationService,
     LogService,

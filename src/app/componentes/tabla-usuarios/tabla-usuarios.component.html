@@ -24,6 +24,8 @@
                 <th scope="col">Apellido</th>
                 <th scope="col">DNI</th>
                 <th scope="col">Edad</th>
+                <th scope="col">Dias</th>
+                <th scope="col">Fecha</th>
                 <th scope="col">Habilitado</th>
 
             </tr>
@@ -34,10 +36,14 @@
                 <td>{{especialista.apellido}}</td>
                 <td>{{especialista.dni}}</td>
                 <td>{{especialista.edad}}</td>
-                <!--<td>
-                    <input type="checkbox" (change)="habilitarEspecialista(especialista,$event.target.checked)"
+                <td>{{especialista.dias}}</td>
+                <td>{{especialista.fecha}}</td>
+                <td>
+                    <input type="checkbox" (change)="habilitarEspecialista(especialista, true)"
                         [checked]="especialista.habilitado">
-                </td>-->
+                    <!--<input type="checkbox" (change)="habilitarEspecialista(especialista,$event.target.checked)"
+                        [checked]="especialista.habilitado">-->
+                </td>
             </tr>
         </tbody>
     </table>

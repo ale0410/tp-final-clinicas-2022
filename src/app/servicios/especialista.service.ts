@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Especialidad } from '../clases/especialidad';
 import { Especialista } from '../clases/especialista';
+import { Dias } from '../clases/dias';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,10 @@ export class EspecialistaService {
     return this.firestore.collection("especialistas", ref => ref.where('especialidades', 'array-contains', especialidad)).snapshotChanges();
   }
 
+  getEspecialistasByDia(dia: Dias) {
+    return this.firestore.collection("especialistas", ref => ref.where('dias', 'array-contains', dia)).snapshotChanges();
+  }
+
   getEspecialistasByList(emailList: string[]) {
     return this.firestore.collection("especialistas", ref => ref.where("mail", "in", emailList)).snapshotChanges();
   }
@@ -37,6 +42,8 @@ export class EspecialistaService {
       edad: especialista.edad,
       dni: especialista.dni,
       especialidades: especialista.especialidades,
+      dias: especialista.dias,
+      fecha: especialista.fecha,
       mail: especialista.mail,
       password: especialista.password,
       fotoUrl: especialista.fotoUrl,

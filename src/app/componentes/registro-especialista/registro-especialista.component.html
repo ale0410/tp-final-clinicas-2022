@@ -41,6 +41,13 @@
                             *ngIf="formAltaEspecialista.get('edad')?.hasError('required') && formAltaEspecialista.get('edad')?.touched">Debe
                             completar con su edad.</span>
                     </div>
+                    <div class="col-sm-6">
+                        <label for="edad">Fecha</label>
+                        <input type="number" class="form-control" formControlName="fecha" placeholder="">
+                        <span class="text-danger"
+                            *ngIf="formAltaEspecialista.get('fecha')?.hasError('required') && formAltaEspecialista.get('fecha')?.touched">Debe
+                            completar con la fecha en que va a atender.</span>
+                    </div>
                 </div>
 
                 <div class="row">
@@ -62,11 +69,38 @@
                         <div *ngIf="agrEspecialidad">
                             <input type="text" placeholder="" #nuevaEspecialidad>
                             <button class="btn btn-sm btn-secondary" type="button"
-                                (click)="agregarNuevaEspecialidad(nuevaEspecialidad.value)">Agregar</button>
+                                (click)="agregarNuevaEspecialidad(nuevaEspecialidad.value)">Agregar especialidad</button>
                         </div>
 
                         <button class="btn btn-sm btn-primary" type="button"
                             (click)="activarAgregadoEspecialidad()">{{agrEspBtn}}</button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label for="dias">Dias</label>
+
+                        <ng-multiselect-dropdown [settings]="dropdownSettings" [data]="listaDias"
+                            formControlName="dias">
+                        </ng-multiselect-dropdown>
+
+                        <span class="text-danger"
+                            *ngIf="formAltaEspecialista.get('dias')?.hasError('required') && formAltaEspecialista.get('dias')?.touched">Debe
+                            seleccionar al menos un dia.</span>
+                        <br>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <br>
+                        <div *ngIf="agrDia">
+                            <input type="text" placeholder="" #nuevoDia>
+                            <button class="btn btn-sm btn-secondary" type="button"
+                                (click)="agregarNuevoDia(nuevoDia.value)">Agregar dia</button>
+                        </div>
+
+                        <button class="btn btn-sm btn-primary" type="button"
+                            (click)="activarAgregadoDia()">{{agrDiaBtn}}</button>
                     </div>
                 </div>
 
