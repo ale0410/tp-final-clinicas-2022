@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "tp-final-clinicas-2022"
+  },
+  "targets": {
+    "tp-final-clinicas-2022": {
+      "hosting": {
+        "tp-final-clinicas-2022": [
+          "tp-final-clinicas-2022"
+        ]
+      }
+    }
+  }
+}

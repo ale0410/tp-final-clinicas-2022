@@ -1,0 +1,106 @@
+<div *ngIf="administrador">
+    <span>Nombre: {{administrador.nombre}}</span>
+    <br>
+    <span>Apellido: {{administrador.apellido}}</span>
+    <br>
+    <span>DNI: {{administrador.dni}}</span>
+    <br>
+    <span>Edad: {{administrador.edad}}</span>
+    <br>
+    <span>Email: {{administrador.mail}}</span>
+    <br>
+    <span>Password: {{administrador.password}}</span>
+    <br>
+    <label>Foto Perfil</label>
+    <br>
+    <img [src]="administrador.fotoUrl" alt="">
+</div>
+<div *ngIf="especialista">
+    <span>Nombre: {{especialista.nombre}}</span>
+    <br>
+    <span>Apellido: {{especialista.apellido}}</span>
+    <br>
+    <span>DNI: {{especialista.dni}}</span>
+    <br>
+    <span>Edad: {{especialista.edad}}</span>
+    <br>
+    <span>Especialidades:
+        <ul class="list-group mb-3 text-muted">
+            <li class=" d-flex justify-content-between lh-condensed "
+                *ngFor="let especialidad of especialista.especialidades">
+                <span>{{especialidad.nombre}}</span>
+            </li>
+        </ul>
+    </span>
+    <br>
+    <span>Habilitado: {{especialista.habilitado | respuestaBooleano}}</span>
+    <br>
+    <span>Email: {{especialista.mail}}</span>
+    <br>
+    <span>Password: {{especialista.password}}</span>
+    <br>
+    <label>Foto Perfil</label>
+    <br>
+    <img [src]="especialista.fotoUrl" alt="">
+</div>
+
+<div *ngIf="paciente">
+    <table id="excel-table-one" class="table table-bordered">
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>DNI</th>
+            <th>edad</th>
+            <th>Obra Social</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Foto Perfil 1</th>
+            <th>Foto Perfil 2</th>
+
+        </tr>
+        <tr>
+
+            <td>{{paciente.nombre}}</td>
+            <td>{{paciente.apellido}}</td>
+            <td>{{paciente.dni}}</td>
+            <td>{{paciente.edad}}</td>
+            <td>{{paciente.obraSocial}}</td>
+            <td>{{paciente.mail}}</td>
+            <td>{{paciente.password}}</td>
+            <td><img [src]="paciente.foto1Url" alt=""></td>
+            <td><img [src]="paciente.foto2Url" alt=""></td>
+
+        </tr>
+    </table>
+
+    <table *ngIf="user.tipo!='paciente' && arrayTurnosPaciente!=[]" id="excel-turnos-table-one"
+        class="table table-bordered">
+        <tr>
+            <th>Especialidad</th>
+            <th>Especialista</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+            <th>Encuesta</th>
+            <th>Calificación</th>
+            <th>Reseña</th>
+
+        </tr>
+        <tr *ngFor="let turno of arrayTurnosPaciente">
+
+            <td>{{turno.especialidad}}</td>
+            <td>{{turno.especialistaNombre}}</td>
+            <!--<td>{{turno.fecha | date:"yyyy/MM/dd HH:mm"}}</td>-->
+            <td>{{turno.estado}}</td>
+            <td>{{turno.encuesta}}</td>
+            <td>{{turno.calificacion}}</td>
+            <td>{{turno.resenia}}</td>
+
+
+        </tr>
+    </table>
+
+    <button *ngIf="user.tipo=='administrador'" class="btn btn-outline-secondary" (click)="exportExcelOnlyOne()">
+        Exportar Datos a Excel
+    </button>
+
+</div>

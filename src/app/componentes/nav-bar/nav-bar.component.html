@@ -1,0 +1,74 @@
+<body>
+    <main>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Third navbar example">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Bienvenido a TPClínica</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarsExample03">
+                    <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" routerLink="home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a *ngIf="!isLogged" class="nav-link" routerLink="login">Ingresar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="registro">Registro</a>
+                        </li>
+                        <li class="nav-item">
+                            <a *ngIf="isLogged" class="nav-link" routerLink="mi-perfil">Mi perfil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a *ngIf="esAdmin" class="nav-link" routerLink="seccion-usuarios">Sección usuarios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a *ngIf="esEspec" class="nav-link" routerLink="pacientes">Mis pacientes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a *ngIf="esAdmin" class="nav-link" routerLink="turnos">Administración de turnos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a *ngIf="esPac || esEspec" class="nav-link" routerLink="mis-turnos">Mis turnos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a *ngIf="esPac || esAdmin" class="nav-link" routerLink="solicitar-turno">Solicitar
+                                turno</a>
+                        </li>
+                        <li class="nav-item">
+                            <a *ngIf="esAdmin" class="nav-link" routerLink="informes">Informes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a *ngIf="isLogged" class="nav-link" (click)="logOut()">Salir</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active"
+                                href="https://github.com/ale0410/tp-final-clinicas-2022/blob/master/README.md">Read me</a>
+                        </li>
+
+                        <!-- <li class="nav-item">
+                            <a class="nav-link disabled">Disabled</a>
+                        </li> -->
+                        <!-- <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown"
+                                aria-expanded="false">Dropdown</a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdown03">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li> -->
+                    </ul>
+                    <!-- <form>
+                        <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+                    </form> -->
+                </div>
+            </div>
+        </nav>
+    </main>
+</body>
+<img src="../../../assets/covid19.jpg" alt="text">

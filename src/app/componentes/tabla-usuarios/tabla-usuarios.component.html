@@ -1,0 +1,61 @@
+<!-- <div class="table-responsive"> -->
+    <table *ngIf="tipoUsuarios=='Administradores'" class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">DNI</th>
+                <th scope="col">Edad</th>
+            </tr>
+        </thead>
+        <tbody (click)="SeleccionarAdministrador(administrador)" *ngFor="let administrador of arrayAdministradores">
+            <tr>
+                <td>{{administrador.nombre}}</td>
+                <td>{{administrador.apellido}}</td>
+                <td>{{administrador.dni}}</td>
+                <td>{{administrador.edad}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table *ngIf="tipoUsuarios=='Especialistas'" class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">DNI</th>
+                <th scope="col">Edad</th>
+                <th scope="col">Habilitado</th>
+
+            </tr>
+        </thead>
+        <tbody (click)="SeleccionarEspecialista(especialista)" *ngFor="let especialista of arrayEspecialistas">
+            <tr>
+                <td>{{especialista.nombre}}</td>
+                <td>{{especialista.apellido}}</td>
+                <td>{{especialista.dni}}</td>
+                <td>{{especialista.edad}}</td>
+                <td>
+                    <input type="checkbox" (change)="habilitarEspecialista(especialista, true)"
+                        [checked]="especialista.habilitado">
+                    <!--<input type="checkbox" (change)="habilitarEspecialista(especialista,$event.target.checked)"
+                        [checked]="especialista.habilitado">-->
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <ul *ngIf="tipoUsuarios=='Pacientes'">
+        <li class="d-inline-block" (click)="SeleccionarPaciente(paciente)" *ngFor="let paciente of arrayPacientes">
+            <div class="fab-button btn">
+                <button mat-mini-fab class="fastAccessButton"
+                    [ngStyle]="{'background-image': 'url(' + paciente.foto1Url + ')'}">
+                </button>
+                <p>{{paciente.nombre}} {{paciente.apellido}} </p>
+            </div>
+
+        </li>
+    </ul>
+
+
+<!-- </div> -->

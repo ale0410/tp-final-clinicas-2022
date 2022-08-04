@@ -1,0 +1,93 @@
+<!doctype html>
+
+<body class="bg-light">
+
+    <div class="container">
+        <main>
+            <div class="row g-5">
+                <div class="col-sm-6 order-sm-last">
+                    <h4 class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-primary">Elegir especialista</span>
+                    </h4>
+                    <app-lista-especialistas (seSeleccionoEspecialista)="cambiarEspecialista($event)">
+                    </app-lista-especialistas>
+
+                </div>
+                <br>
+                <br>
+                <div *ngIf="eligioEspecialista" class="col-sm-6 order-sm-last">
+                    <h4 class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-primary">Elegir especialidad</span>
+                    </h4>
+                    <app-lista-especialidades (seSeleccionoEspecialidad)="cambiarEspecialidad($event)"
+                        [especialistaSeleccionado]="especialistaSeleccionado">
+                    </app-lista-especialidades>
+
+                </div>
+            </div>
+            <br>
+            <br>
+
+            <div class="row g-5">
+                <div *ngIf="esAdmin">
+                    <h4 class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-primary">Elegir paciente</span>
+                    </h4>
+                    <app-lista-pacientes (seSeleccionoPaciente)="cambiarPaciente($event)">
+                    </app-lista-pacientes>
+                </div>
+
+            </div>
+            <br>
+
+            <div class="row g-5">
+                <br>
+
+                <form [formGroup]="formAltaTurno" (ngSubmit)="guardarTurno()">
+                    <h4 class="mb-3">Completar turno</h4>
+                    <div class="form-group">
+                        <div class="row g-3">
+
+                            <div class="col-sm-6">
+                                <label for="especialista">Especialista</label>
+                                <input type="text" class="form-control" formControlName="especialista" readonly
+                                    placeholder="">
+                                <span class="text-danger"
+                                    *ngIf="formAltaTurno.get('especialista')?.hasError('required') && formAltaTurno.get('especialista')?.touched">Debe
+                                    seleccionar especialista de la tabla luego de haber seleccionado la
+                                    especialidad.</span>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <label for="especialidad">Especialidad</label>
+                                <input type="text" class="form-control" formControlName="especialidad" readonly
+                                    placeholder="">
+                                <span class="text-danger"
+                                    *ngIf="formAltaTurno.get('especialidad')?.hasError('required') && formAltaTurno.get('especialidad')?.touched">Debe
+                                    seleccionar especialidad en de la tabla.</span>
+                            </div>
+
+
+                            <div *ngIf="esAdmin" class="col-sm-6">
+                                <label for="paciente">Paciente</label>
+                                <input type="text" class="form-control" formControlName="paciente" readonly
+                                    placeholder="">
+                                <span class="text-danger"
+                                    *ngIf="formAltaTurno.get('paciente')?.hasError('required') && formAltaTurno.get('paciente')?.touched">Debe
+                                    seleccionar paciente de la tabla.</span>
+                            </div>
+                            <br>
+
+                            <br>
+                            <re-captcha formControlName="reCaptcha"></re-captcha>
+                            <br>
+                            <button class="btn btn-primary btn-md" [disabled]="formAltaTurno.invalid"
+                                type="submit">Cargar
+                                Turno</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+</body>
