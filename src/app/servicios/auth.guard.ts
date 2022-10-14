@@ -13,13 +13,23 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     let user: any = JSON.parse(localStorage.getItem('user') || "");
 
-    if (user) {
+    if (user /*&& user.tipo == 'administrador'*/) {
+      
       return true;
     }
     else {
       this.router.navigate(['home']);
       return false;
     }
+    /*else if(user && user.tipo == 'especialista')
+    {
+      return true;
+    }
+    else if(user && user.tipo == 'paciente')
+    {
+      return true;
+    }*/
+    
   }
   
 }

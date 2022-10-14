@@ -43,6 +43,7 @@ export class FiltroTurnoPipe implements PipeTransform {
       || (turno.encuesta.indexOf(filter) !== -1)
       || (turno.especialistaNombre.indexOf(filter) !== -1)
       || (turno.estado.indexOf(filter) !== -1)
+      || (turno.fecha.toString().indexOf(filter) !== -1)
       || (turno.pacienteMail.indexOf(filter) !== -1)
       || (turno.pacienteNombre.indexOf(filter) !== -1)
       || (turno.resenia.indexOf(filter) !== -1)

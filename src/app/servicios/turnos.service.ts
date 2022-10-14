@@ -22,7 +22,7 @@ export class TurnosService {
   }
 
   getTurno(turno: Turno) {
-    return this.firestore.collection("turnos", ref => ref.where('pacienteMail', '==', turno.pacienteMail).where('especialistaMail', '==', turno.especialistaMail)).snapshotChanges();
+    return this.firestore.collection("turnos", ref => ref.where('pacienteMail', '==', turno.pacienteMail).where('especialistaMail', '==', turno.especialistaMail).where('fecha', '==', turno.fecha)).snapshotChanges();
   }
 
   getTurnosFinalizados() {
@@ -48,6 +48,7 @@ export class TurnosService {
       especialidad: turno.especialidad,
       especialistaMail: turno.especialistaMail,
       especialistaNombre: turno.especialistaNombre,
+      fecha: turno.fecha,
       estado: turno.estado,
       calificacion: turno.calificacion,
       encuesta: turno.encuesta,

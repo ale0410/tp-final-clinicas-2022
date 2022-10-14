@@ -50,42 +50,42 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    let admin = this.administradorService.getAdministrador("aleb2017@gmail.com").subscribe((usuarios: any) => {
+    let admin = this.administradorService.getAdministrador("ale23989@gmail.com").subscribe((usuarios: any) => {
       if (usuarios[0] != null) {
         this.adminFotoUrl = usuarios[0].payload.doc.data().fotoUrl;
       }
       admin.unsubscribe();
     });
 
-    let pac1 = this.pacienteService.getPaciente("camibrando93@gmail.com").subscribe((usuarios: any) => {
+    let pac1 = this.pacienteService.getPaciente("valeriamatu@gmail.com").subscribe((usuarios: any) => {
       if (usuarios[0] != null) {
         this.pac1FotoUrl = usuarios[0].payload.doc.data().foto1Url;
       }
       pac1.unsubscribe();
     });
 
-    let pac2 = this.pacienteService.getPaciente("axitasua@gmail.com").subscribe((usuarios: any) => {
+    let pac2 = this.pacienteService.getPaciente("matigravante@gmail.com").subscribe((usuarios: any) => {
       if (usuarios[0] != null) {
         this.pac2FotoUrl = usuarios[0].payload.doc.data().foto1Url;
       }
       pac2.unsubscribe();
     });
 
-    let pac3 = this.pacienteService.getPaciente("wendy93@gmail.com").subscribe((usuarios: any) => {
+    let pac3 = this.pacienteService.getPaciente("bsantillan@gmail.com").subscribe((usuarios: any) => {
       if (usuarios[0] != null) {
         this.pac3FotoUrl = usuarios[0].payload.doc.data().foto1Url;
       }
       pac3.unsubscribe();
     });
 
-    let espec1 = this.especialistaService.getEspecialista("cdestol@gmail.com").subscribe((usuarios: any) => {
+    let espec1 = this.especialistaService.getEspecialista("achinsky@gmail.com").subscribe((usuarios: any) => {
       if (usuarios[0] != null) {
         this.espec1FotoUrl = usuarios[0].payload.doc.data().fotoUrl;
       }
       espec1.unsubscribe();
     });
 
-    let espec2 = this.especialistaService.getEspecialista("matiasgravante@gmail.com").subscribe((usuarios: any) => {
+    let espec2 = this.especialistaService.getEspecialista("selene92@gmail.com").subscribe((usuarios: any) => {
       if (usuarios[0] != null) {
         this.espec2FotoUrl = usuarios[0].payload.doc.data().fotoUrl;
       }
@@ -129,7 +129,7 @@ export class LoginComponent implements OnInit {
     let cuenta: any = JSON.parse(localStorage.getItem('user') || " ");
     let user = this.pacienteService.getPaciente(this.email).subscribe((usuarios: any) => {
       if (usuarios[0] != null) {
-        if (cuenta.emailVerified) {
+        if (cuenta.emailVerified != null) {
           let loggedUser = usuarios[0].payload.doc.data();
           localStorage.setItem('loggedUser', JSON.stringify(loggedUser));
           NavBarComponent.updateUserStatus.next(true);
@@ -150,7 +150,7 @@ export class LoginComponent implements OnInit {
     let cuenta: any = JSON.parse(localStorage.getItem('user') || " ");
     let user = this.especialistaService.getEspecialista(this.email).subscribe((usuarios: any) => {
       if (usuarios[0] != null) {
-        if (cuenta.emailVerified) {
+        if (cuenta.emailVerified != null) {
           let loggedUser = usuarios[0].payload.doc.data();
           if (loggedUser.habilitado == true) {
             localStorage.setItem('loggedUser', JSON.stringify(loggedUser));
@@ -173,37 +173,37 @@ export class LoginComponent implements OnInit {
   }
 
   cargarAdmin() {
-    this.email = "aleb2017@gmail.com";
-    this.password = "Sonic2022#";
+    this.email = "ale23989@gmail.com";
+    this.password = "Etios2022#";
   }
 
   cargarPaciente1() {
-    this.email = "camibrando93@gmail.com";
-    this.password = "Brando93#";
+    this.email = "valeriamatu@gmail.com";
+    this.password = "Matu06#";
   }
 
   cargarPaciente2() {
-    this.email = "axitasua@gmail.com";
-    this.password = "Axitasua19#";
-  }
-
-  cargarPaciente3() {
-    this.email = "wendy93@gmail.com";
-    this.password = "Wendy93#";
-  }
-
-  cargarEspecialista1() {
-    this.email = "cdestol@gmail.com";
-    this.password = "Cdestol2020#";
-  }
-
-  cargarEspecialista2() {
-    this.email = "matiasgravante@gmail.com";
+    this.email = "matigravante@gmail.com";
     this.password = "Gravante17#";
   }
 
+  cargarPaciente3() {
+    this.email = "bsantillan@gmail.com";
+    this.password = "Bsantillan18#";
+  }
+
+  cargarEspecialista1() {
+    this.email = "achinsky@gmail.com";
+    this.password = "Achinsky12#";
+  }
+
+  cargarEspecialista2() {
+    this.email = "selene92@gmail.com";
+    this.password = "Selene92#";
+  }
+
   userIsLogged() {
-    return JSON.parse(localStorage.getItem('loggedUser') || " ");
+    return JSON.parse(localStorage.getItem('loggedUser') || "false");
   }
 
 }

@@ -26,7 +26,6 @@ export class AltaTurnosComponent implements OnInit {
 
   eligioEspecialista: boolean = false;
 
-  diaSeleccionado!: Dias;
   especialidadSeleccionada!: Especialidad;
   especialistaSeleccionado!: Especialista;
   pacienteSeleccionado!: Paciente;
@@ -53,6 +52,7 @@ export class AltaTurnosComponent implements OnInit {
 
     this.formAltaTurno = fb.group({
       especialista: ["", Validators.required],
+      //fecha: ["", Validators.required],
       especialidad: ["", Validators.required],
       paciente: ["", Validators.required],
       reCaptcha: ['', Validators.required]
@@ -77,7 +77,8 @@ export class AltaTurnosComponent implements OnInit {
     let especialistaMail = this.especialistaSeleccionado.mail;
     let especialistaNombre = this.especialistaSeleccionado.nombre + ' ' + this.especialistaSeleccionado.apellido;
     let especialidad = this.formAltaTurno.controls['especialidad'].value;
-    let turno: Turno = new Turno(pacienteMail, pacienteNombre, especialistaMail, especialistaNombre, especialidad, EstadoTurno.enespera, "", "", "")
+    //let fecha = this.formAltaTurno.controls['fecha'].value;
+    let turno: Turno = new Turno(pacienteMail, pacienteNombre, especialistaMail, especialistaNombre, new Date(), especialidad, EstadoTurno.enespera, "", "", "")
     this.turnosService.guardarTurno(turno).then(resp => {
       this.showSuccess();
     }).catch((error) => {
@@ -97,6 +98,7 @@ export class AltaTurnosComponent implements OnInit {
   cambiarEspecialidad(especialidad: Especialidad) {
     this.formAltaTurno.controls['especialidad'].setValue(especialidad.nombre);
     this.especialidadSeleccionada = especialidad;
+    /*this.formAltaTurno.controls['fecha'].setValue('');*/
     this.turnosArray = [];
     this.getDisponibilidad();
   }
@@ -110,6 +112,7 @@ export class AltaTurnosComponent implements OnInit {
     }
     this.eligioEspecialista = true;
     this.formAltaTurno.controls['especialista'].setValue(especialista.nombre);
+    /*this.formAltaTurno.controls['fecha'].setValue('');*/
   }
 
   cambiarTurno(turno: Date) {
@@ -201,7 +204,7 @@ export class AltaTurnosComponent implements OnInit {
     let turnosSuscription = this.turnosService.getTurnosByEspecialista(this.especialistaSeleccionado.mail).subscribe((turnos: any) => {
       for (let index = 0; index < turnos.length; index++) {
         let turno: Turno = turnos[index].payload.doc.data();
-        this.turnosArray.splice(this.turnosArray.findIndex(t => (t.getTime() == new Date().getTime() && (turno.estado == EstadoTurno.enespera || turno.estado == EstadoTurno.aceptado))), 1);
+        this.turnosArray.splice(this.turnosArray.findIndex(t => (t.getTime() == new Date(turno.fecha).getTime() && (turno.estado == EstadoTurno.enespera || turno.estado == EstadoTurno.aceptado))), 1);
       }
       this.turnosArray.sort((val1, val2) => { return val1.getTime() - val2.getTime() })
       turnosSuscription.unsubscribe()

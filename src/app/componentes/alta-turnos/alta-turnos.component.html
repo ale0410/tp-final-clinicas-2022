@@ -77,6 +77,29 @@
                                     seleccionar paciente de la tabla.</span>
                             </div>
                             <br>
+                            <!--<div class="row">
+                                <div class="col-sm-6">
+                                    <label for="fecha">Fecha</label>
+                                    <input type="text" class="form-control" readonly formControlName="fecha">
+                                    <span class="text-danger"
+                                        *ngIf="formAltaTurno.get('fecha')?.hasError('required') && formAltaTurno.get('fecha')?.touched">Debe
+                                        elegir una fecha de la tabla de posibles turnos.</span>
+                                    <br>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="turnos">Posibles turnos</label>
+                                    <br>
+                                    <li class="d-inline-block" *ngFor="let turno of turnosArray">
+                                        <button class="btn btn-secondary btn-sm" type="button"
+                                            style="border-radius: 2px;" (click)="cambiarTurno(turno)">
+                                            <p> {{turno | date:"yyyy/MM/dd HH:mm"}}</p>
+                                        </button>
+                                    </li>
+                                </div>
+
+
+
+                            </div>-->
 
                             <br>
                             <re-captcha formControlName="reCaptcha"></re-captcha>
