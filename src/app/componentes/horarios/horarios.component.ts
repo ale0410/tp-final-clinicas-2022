@@ -97,7 +97,7 @@ export class HorariosComponent implements OnInit {
   }
 
   agregarNuevaDisponibilidad() {
-    let loggedUser = JSON.parse(this.especialista);
+    let loggedUser = JSON.parse(localStorage.getItem('loggedUser') || " ");
     let especialistaMail: string = loggedUser.mail;
     let especialidad = this.formNuevaDisp.controls['especialidad'].value;
     let duracionTurno = this.formNuevaDisp.controls['duracionTurno'].value;

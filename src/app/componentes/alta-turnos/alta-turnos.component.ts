@@ -52,7 +52,7 @@ export class AltaTurnosComponent implements OnInit {
 
     this.formAltaTurno = fb.group({
       especialista: ["", Validators.required],
-      //fecha: ["", Validators.required],
+      fecha: ["", Validators.required],
       especialidad: ["", Validators.required],
       paciente: ["", Validators.required],
       reCaptcha: ['', Validators.required]
@@ -77,8 +77,8 @@ export class AltaTurnosComponent implements OnInit {
     let especialistaMail = this.especialistaSeleccionado.mail;
     let especialistaNombre = this.especialistaSeleccionado.nombre + ' ' + this.especialistaSeleccionado.apellido;
     let especialidad = this.formAltaTurno.controls['especialidad'].value;
-    //let fecha = this.formAltaTurno.controls['fecha'].value;
-    let turno: Turno = new Turno(pacienteMail, pacienteNombre, especialistaMail, especialistaNombre, new Date(), especialidad, EstadoTurno.enespera, "", "", "")
+    let fecha = this.formAltaTurno.controls['fecha'].value;
+    let turno: Turno = new Turno(pacienteMail, pacienteNombre, especialistaMail, especialistaNombre, fecha, especialidad, EstadoTurno.enespera, "", "", "")
     this.turnosService.guardarTurno(turno).then(resp => {
       this.showSuccess();
     }).catch((error) => {
@@ -98,7 +98,7 @@ export class AltaTurnosComponent implements OnInit {
   cambiarEspecialidad(especialidad: Especialidad) {
     this.formAltaTurno.controls['especialidad'].setValue(especialidad.nombre);
     this.especialidadSeleccionada = especialidad;
-    /*this.formAltaTurno.controls['fecha'].setValue('');*/
+    this.formAltaTurno.controls['fecha'].setValue('');
     this.turnosArray = [];
     this.getDisponibilidad();
   }
@@ -112,12 +112,12 @@ export class AltaTurnosComponent implements OnInit {
     }
     this.eligioEspecialista = true;
     this.formAltaTurno.controls['especialista'].setValue(especialista.nombre);
-    /*this.formAltaTurno.controls['fecha'].setValue('');*/
+    this.formAltaTurno.controls['fecha'].setValue('');
   }
 
   cambiarTurno(turno: Date) {
     this.turnoSeleccionado = turno;
-    //this.formAltaTurno.controls['fecha'].setValue(this.datepipe.transform(turno, 'yyyy-MM-dd HH:mm'));
+    this.formAltaTurno.controls['fecha'].setValue(this.datepipe.transform(turno, 'yyyy-MM-dd HH:mm'));
   }
 
 

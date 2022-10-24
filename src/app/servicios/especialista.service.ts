@@ -12,7 +12,7 @@ export class EspecialistaService {
   especialistas;
 
   constructor(private firestore: AngularFirestore) {
-    this.especialistas = firestore.collection("especialistas").snapshotChanges();
+    this.especialistas = firestore.collection("especialistas").snapshotChanges(); //{{fecha|date}}
   }
 
   getEspecialistas() {
