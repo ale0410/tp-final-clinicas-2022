@@ -19,7 +19,7 @@
                 (click)="abrirForm()">{{mensajeBotonCancelarTurno}}</button>
             <br>
             <br>
-            <form *ngIf="turnoCancelado && turnoSeleccionado.estado!='Cancelado'" [formGroup]="formCancelacionTurno"
+            <button *ngIf="turnoCancelado && turnoSeleccionado.estado!='Cancelado'" [formGroup]="formCancelacionTurno"
                 (ngSubmit)="cancelarTurno(turnoSeleccionado)">
                 <h6 class="mb-3">Cancelación de turno</h6>
                 <div class="form-group">
@@ -39,7 +39,7 @@
                     </div>
                 </div>
 
-            </form>
+            </button>
         </div>
 
 
@@ -70,7 +70,7 @@
                     <br>
                 </div>
                 <div class="row g-3">
-                    <form
+                    <button
                         *ngIf="turnoCambioEstado && (estadoSeleccionado=='Cancelado' || estadoSeleccionado=='Rechazado') "
                         [formGroup]="formCanceloRechazoTurno" (ngSubmit)="cambiarEstadoTurno(turnoSeleccionado)">
                         <div class="form-group">
@@ -83,8 +83,8 @@
                                 type="submit">Efectuar
                                 cambio de estado</button>
                         </div>
-                    </form>
-                    <form *ngIf="estadoSeleccionado=='Finalizado'" [formGroup]="formFinalizoTurno"
+                    </button>
+                    <button *ngIf="estadoSeleccionado=='Finalizado'" [formGroup]="formFinalizoTurno"
                         (ngSubmit)="cambiarEstadoTurno(turnoSeleccionado)">
                         <div class="form-group">
                             <label for="comentario">Comentario/Diagnóstico</label>
@@ -99,7 +99,7 @@
                             <button class="btn btn-primary btn-md" [disabled]="formFinalizoTurno.invalid"
                                 type="submit">Finalizar turno</button>
                         </div>
-                    </form>
+                    </button>
                     <button *ngIf="estadoSeleccionado=='Aceptado'" class="btn btn-primary btn-md"
                         (click)="cambiarEstadoTurno(turnoSeleccionado)" type="button">Aceptar
                         turno</button>
@@ -137,7 +137,7 @@
                 [disabled]="turnoSeleccionado.estado=='Cancelado'">{{mensajeBotonCancelarTurno}}</button>
             <br>
             <br>
-            <form *ngIf="turnoCancelado && turnoSeleccionado.estado!='Cancelado'" [formGroup]="formCancelacionTurno"
+            <button *ngIf="turnoCancelado && turnoSeleccionado.estado!='Cancelado'" [formGroup]="formCancelacionTurno"
                 (ngSubmit)="cancelarTurno(turnoSeleccionado)">
                 <h6 class="mb-3">Cancelación de turno</h6>
                 <div class="form-group">
@@ -157,7 +157,7 @@
                     </div>
                 </div>
 
-            </form>
+            </button>
 
             <button *ngIf="turnoSeleccionado.resenia || turnoSeleccionado.calificacion" class="btn btn-primary btn-sm"
                 type="button" (click)="mostrarResenia()">{{mensajeBotonResenia}}</button>

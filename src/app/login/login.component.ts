@@ -71,7 +71,7 @@ export class LoginComponent implements OnInit {
       pac2.unsubscribe();
     });
 
-    let pac3 = this.pacienteService.getPaciente("bsantillan@gmail.com").subscribe((usuarios: any) => {
+    let pac3 = this.pacienteService.getPaciente("nancycottet@gmail.com").subscribe((usuarios: any) => {
       if (usuarios[0] != null) {
         this.pac3FotoUrl = usuarios[0].payload.doc.data().foto1Url;
       }
@@ -85,7 +85,7 @@ export class LoginComponent implements OnInit {
       espec1.unsubscribe();
     });
 
-    let espec2 = this.especialistaService.getEspecialista("selene92@gmail.com").subscribe((usuarios: any) => {
+    let espec2 = this.especialistaService.getEspecialista("stefimarco@gmail.com").subscribe((usuarios: any) => {
       if (usuarios[0] != null) {
         this.espec2FotoUrl = usuarios[0].payload.doc.data().fotoUrl;
       }
@@ -188,8 +188,8 @@ export class LoginComponent implements OnInit {
   }
 
   cargarPaciente3() {
-    this.email = "bsantillan@gmail.com";
-    this.password = "Bsantillan18#";
+    this.email = "nancycottet@gmail.com";
+    this.password = "Nancy09#";
   }
 
   cargarEspecialista1() {
@@ -198,8 +198,8 @@ export class LoginComponent implements OnInit {
   }
 
   cargarEspecialista2() {
-    this.email = "selene92@gmail.com";
-    this.password = "Selene92#";
+    this.email = "stefimarco@gmail.com";
+    this.password = "Stefi20#";
   }
 
   userIsLogged() {

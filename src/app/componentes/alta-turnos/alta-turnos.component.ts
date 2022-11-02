@@ -77,9 +77,9 @@ export class AltaTurnosComponent implements OnInit {
     let especialistaMail = this.especialistaSeleccionado.mail;
     let especialistaNombre = this.especialistaSeleccionado.nombre + ' ' + this.especialistaSeleccionado.apellido;
     let especialidad = this.formAltaTurno.controls['especialidad'].value;
-    let fecha = this.formAltaTurno.controls['fecha'].value;
+    let fecha = this.formAltaTurno.controls['fecha'].value; //Validar que la fecha sea mayor o igual a hoy y que el turno no haya sido tomado
     let turno: Turno = new Turno(pacienteMail, pacienteNombre, especialistaMail, especialistaNombre, fecha, especialidad, EstadoTurno.enespera, "", "", "")
-    this.turnosService.guardarTurno(turno).then(resp => {
+    this.turnosService.guardarTurno(turno).then(resp => { //Llenar los buttons de opciones cuando modifico el estado del turno
       this.showSuccess();
     }).catch((error) => {
       this.showError(error);
@@ -135,7 +135,7 @@ export class AltaTurnosComponent implements OnInit {
           let franja: Franja = new Franja(disponibilidad.franjas[index].dia, this.extractTime(disponibilidad.franjas[index].start), this.extractTime(disponibilidad.franjas[index].finish));
           let primerTurno = new Date(), ultimoTurno = new Date();
           ultimoTurno.setDate(ultimoTurno.getDate() + 15);
-          while (listaDias[primerTurno.getDay()] != franja.dia.toString()) {
+          while (listaDias[primerTurno.getDay()] != franja.dia.toString() && primerTurno >= new Date()) {
             primerTurno.setDate(primerTurno.getDate() + 1)
           }
           primerTurno.setHours(franja.start.hours);
@@ -143,7 +143,7 @@ export class AltaTurnosComponent implements OnInit {
           primerTurno.setSeconds(0);
           primerTurno.setMilliseconds(0);
 
-          while (listaDias[ultimoTurno.getDay()] != franja.dia.toString()) {
+          while (listaDias[ultimoTurno.getDay()] != franja.dia.toString() && ultimoTurno >= new Date()) {
             ultimoTurno.setDate(ultimoTurno.getDate() - 1)
           }
           ultimoTurno.setHours(franja.finish.hours);
@@ -152,40 +152,58 @@ export class AltaTurnosComponent implements OnInit {
           ultimoTurno.setMilliseconds(0);
 
           let turnoInicial = new Date();
-          turnoInicial.setDate(primerTurno.getDate());
-          turnoInicial.setHours(primerTurno.getHours());
-          turnoInicial.setMinutes(primerTurno.getMinutes());
-          turnoInicial.setSeconds(0);
-          turnoInicial.setMilliseconds(0);
 
-          this.turnosArray.push(turnoInicial)
+          if(turnoInicial >= new Date())
+          {
+            turnoInicial.setDate(primerTurno.getDate());
+            turnoInicial.setHours(primerTurno.getHours());
+            turnoInicial.setMinutes(primerTurno.getMinutes());
+            turnoInicial.setSeconds(0);
+            turnoInicial.setMilliseconds(0);
+
+            this.turnosArray.push(turnoInicial);
+          }
+
+          
 
           while (primerTurno <= ultimoTurno) {
             primerTurno.setMinutes(primerTurno.getMinutes() + disponibilidad.duracionTurno);
 
             let primerTurnoDelDia = new Date();
-            primerTurnoDelDia.setDate(primerTurno.getDate());
-            primerTurnoDelDia.setHours(franja.start.hours);
-            primerTurnoDelDia.setMinutes(franja.start.minutes);
-            primerTurnoDelDia.setSeconds(0);
-            primerTurnoDelDia.setMilliseconds(0);
+
+            if(primerTurnoDelDia >= new Date())
+            {
+               primerTurnoDelDia.setDate(primerTurno.getDate());
+               primerTurnoDelDia.setHours(franja.start.hours);
+               primerTurnoDelDia.setMinutes(franja.start.minutes);
+               primerTurnoDelDia.setSeconds(0);
+               primerTurnoDelDia.setMilliseconds(0);  
+            }
 
             let ultimoTurnoDelDia = new Date();
-            ultimoTurnoDelDia.setDate(primerTurno.getDate());
-            ultimoTurnoDelDia.setHours(franja.finish.hours);
-            ultimoTurnoDelDia.setMinutes(franja.finish.minutes - disponibilidad.duracionTurno);
-            ultimoTurnoDelDia.setSeconds(0);
-            ultimoTurnoDelDia.setMilliseconds(0);
+
+            if(ultimoTurnoDelDia >= new Date())
+            {
+               ultimoTurnoDelDia.setDate(primerTurno.getDate());
+               ultimoTurnoDelDia.setHours(franja.finish.hours);
+               ultimoTurnoDelDia.setMinutes(franja.finish.minutes - disponibilidad.duracionTurno);
+               ultimoTurnoDelDia.setSeconds(0);
+               ultimoTurnoDelDia.setMilliseconds(0);
+            }
 
             let turno = new Date();
-            turno.setDate(primerTurno.getDate());
-            turno.setHours(primerTurno.getHours());
-            turno.setMinutes(primerTurno.getMinutes());
-            turno.setSeconds(0);
-            turno.setMilliseconds(0);
 
-            if (listaDias[turno.getDay()] == franja.dia.toString() && turno >= primerTurnoDelDia && turno <= ultimoTurnoDelDia) {
-              this.turnosArray.push(turno);
+            if(turno >= new Date())
+            {
+               turno.setDate(primerTurno.getDate());
+               turno.setHours(primerTurno.getHours());
+               turno.setMinutes(primerTurno.getMinutes());
+               turno.setSeconds(0);
+               turno.setMilliseconds(0);
+               
+               if (listaDias[turno.getDay()] == franja.dia.toString() && turno >= primerTurnoDelDia && turno <= ultimoTurnoDelDia) {
+                this.turnosArray.push(turno);
+               }
             }
 
           }
