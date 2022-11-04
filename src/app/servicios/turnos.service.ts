@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFirestore, DocumentReference } from '@angular/fire/compat/firestore';
 import { EstadoTurno, Turno } from '../clases/turno';
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { Encuesta } from '../clases/encuesta';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +11,7 @@ import { EstadoTurno, Turno } from '../clases/turno';
 export class TurnosService {
 
   turnos;
+  listaEncuestas!:Observable<Encuesta[]>;
 
   constructor(private firestore: AngularFirestore) {
     this.turnos = firestore.collection("turnos").snapshotChanges();

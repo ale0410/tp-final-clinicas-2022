@@ -77,9 +77,9 @@ export class AltaTurnosComponent implements OnInit {
     let especialistaMail = this.especialistaSeleccionado.mail;
     let especialistaNombre = this.especialistaSeleccionado.nombre + ' ' + this.especialistaSeleccionado.apellido;
     let especialidad = this.formAltaTurno.controls['especialidad'].value;
-    let fecha = this.formAltaTurno.controls['fecha'].value; //Validar que la fecha sea mayor o igual a hoy y que el turno no haya sido tomado
+    let fecha = this.formAltaTurno.controls['fecha'].value; 
     let turno: Turno = new Turno(pacienteMail, pacienteNombre, especialistaMail, especialistaNombre, fecha, especialidad, EstadoTurno.enespera, "", "", "")
-    this.turnosService.guardarTurno(turno).then(resp => { //Llenar los buttons de opciones cuando modifico el estado del turno
+    this.turnosService.guardarTurno(turno).then(resp => { 
       this.showSuccess();
     }).catch((error) => {
       this.showError(error);

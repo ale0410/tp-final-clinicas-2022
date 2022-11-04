@@ -13,6 +13,7 @@ import { PacientesComponent } from './componentes/pacientes/pacientes.component'
 import { SeccionUsuariosComponent } from './componentes/seccion-usuarios/seccion-usuarios.component';
 import { EspecAuthGuard } from './servicios/espec-auth.guard';
 import { InformesComponent } from './componentes/informes/informes.component';
+import { EncuestaComponent } from './componentes/encuesta/encuesta.component';
 
 
 const routes: Routes = [
@@ -52,6 +53,9 @@ const routes: Routes = [
   },
   {
     path: 'informes', component: InformesComponent, canActivate: [AdminAuthGuard]
+  },
+  {
+    path: 'encuestas', component: EncuestaComponent, canActivate: [AuthGuard]
   }
 ];
 

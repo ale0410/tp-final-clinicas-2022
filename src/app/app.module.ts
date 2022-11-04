@@ -61,6 +61,8 @@ import { EmbiggensDirective } from './directivas/embiggens.directive';
 import { RepositionDirective } from './directivas/reposition.directive';
 import { ListaDiasComponent } from './componentes/lista-dias/lista-dias.component';
 import { FiltroDiasPipe } from './pipes/filtro-dias.pipe';
+import { EncuestaComponent } from './componentes/encuesta/encuesta.component';
+import { PopupComponent } from './componentes/popup/popup.component';
 
 
 @NgModule({
@@ -103,7 +105,9 @@ import { FiltroDiasPipe } from './pipes/filtro-dias.pipe';
     RepositionDirective,
     InformesComponent,
     ListaDiasComponent,
-    FiltroDiasPipe
+    FiltroDiasPipe,
+    EncuestaComponent,
+    PopupComponent
   ],
   imports: [
     MatButtonModule,
