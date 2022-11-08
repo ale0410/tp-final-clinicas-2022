@@ -6,6 +6,9 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { RecaptchaModule, RecaptchaFormsModule, RECAPTCHA_SETTINGS } from 'ng-recaptcha';
 import { ToastrModule } from 'ngx-toastr';
 import { HighchartsChartModule } from 'highcharts-angular';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -63,6 +66,8 @@ import { ListaDiasComponent } from './componentes/lista-dias/lista-dias.componen
 import { FiltroDiasPipe } from './pipes/filtro-dias.pipe';
 import { EncuestaComponent } from './componentes/encuesta/encuesta.component';
 import { PopupComponent } from './componentes/popup/popup.component';
+import { ComentarioComponent } from './componentes/comentario/comentario.component';
+import { TranslationComponent } from './componentes/translation/translation.component';
 
 
 @NgModule({
@@ -107,7 +112,9 @@ import { PopupComponent } from './componentes/popup/popup.component';
     ListaDiasComponent,
     FiltroDiasPipe,
     EncuestaComponent,
-    PopupComponent
+    PopupComponent,
+    ComentarioComponent,
+    TranslationComponent
   ],
   imports: [
     MatButtonModule,
@@ -129,6 +136,16 @@ import { PopupComponent } from './componentes/popup/popup.component';
     ReactiveFormsModule,
     NgMultiSelectDropDownModule.forRoot(),
     HighchartsChartModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (http: HttpClient) => {
+          return new TranslateHttpLoader(http);
+        },
+        deps: [ HttpClient ]
+      }
+    }),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore())

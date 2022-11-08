@@ -1,3 +1,4 @@
+import { Comentario } from "./comentario";
 import { Especialidad } from "./especialidad";
 import { Especialista } from "./especialista";
 import { Paciente } from "./paciente";
@@ -13,6 +14,10 @@ export class Turno {
     public encuesta: string;
     public calificacion: string;
     public resenia: string;
+    public id!:string;
+    public encuestaRespondidaPaciente!:boolean;
+    public encuestaRespondidaMedico!:boolean;
+    public comentario!:any;
 
 
     constructor(pacienteMail: string, pacienteNombre: string, especialistaMail: string, especialistaNombre: string, fecha: Date, especialidad: string, estado: EstadoTurno, encuesta: string, calificacion: string, resenia: string) {
@@ -26,7 +31,8 @@ export class Turno {
         this.encuesta = encuesta;
         this.calificacion = calificacion;
         this.resenia = resenia;
-
+        this.encuestaRespondidaMedico = false;
+        this.encuestaRespondidaPaciente = false;
     }
 }
 

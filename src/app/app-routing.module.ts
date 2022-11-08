@@ -14,6 +14,8 @@ import { SeccionUsuariosComponent } from './componentes/seccion-usuarios/seccion
 import { EspecAuthGuard } from './servicios/espec-auth.guard';
 import { InformesComponent } from './componentes/informes/informes.component';
 import { EncuestaComponent } from './componentes/encuesta/encuesta.component';
+import { ComentarioComponent } from './componentes/comentario/comentario.component';
+import { TranslationComponent } from './componentes/translation/translation.component';
 
 
 const routes: Routes = [
@@ -56,6 +58,12 @@ const routes: Routes = [
   },
   {
     path: 'encuestas', component: EncuestaComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'comentarios', component: ComentarioComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'idiomas', component: TranslationComponent, canActivate: [AuthGuard]
   }
 ];
 

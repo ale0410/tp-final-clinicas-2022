@@ -43,7 +43,13 @@
                             <a *ngIf="esAdmin" class="nav-link" routerLink="informes">Informes</a>
                         </li>
                         <li class="nav-item">
-                            <a *ngIf="isLogged" class="nav-link" routerLink="encuestas">Encuestas</a>
+                            <a *ngIf="esPac || esEspec" class="nav-link" routerLink="encuestas">Encuestas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a *ngIf="esPac || esEspec" class="nav-link" routerLink="comentarios">Comentarios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a *ngIf="isLogged" class="nav-link" routerLink="idiomas">Idiomas</a>
                         </li>
                         <li class="nav-item">
                             <a *ngIf="isLogged" class="nav-link" (click)="logOut()">Salir</a>
