@@ -1,3 +1,17 @@
 {
-   "principal.texto" : "La vida es un carnaval"
+   "administracionTurnos": "Administración de turnos",
+   "bienvenido": "Bienvenido a TP Clinica",
+   "comentarios": "Comentarios",
+   "encuestas": "Encuestas",
+   "informes": "Informes",
+   "ingresar" : "Ingresar",
+   "inicio": "Inicio",
+   "miPerfil": "Mi perfil",
+   "misPacientes": "Mis pacientes",
+   "misTurnos": "Mis turnos",
+   "principal.texto" : "Bienvenido. Elija una opción para sacar turno",
+   "registro": "Registro",
+   "salir": "Salir",
+   "seccionUsuarios": "Sección de usuarios",
+   "solicitarTurno": "Solicitar turno"
 }

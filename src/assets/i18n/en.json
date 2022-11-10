@@ -1,3 +1,17 @@
 {
-    "principal.texto" : "Life is a party"
+    "administracionTurnos": "Shift management",
+    "bienvenido": "Welcome to TP Clinic",
+    "comentarios": "Comments",
+    "encuestas": "Surveys",
+    "informes": "Reports",
+    "ingresar" : "Intro",
+    "inicio": "Home",
+    "miPerfil": "My profile",
+    "misPacientes": "My patients",
+    "misTurnos": "My turns",
+    "principal.texto" : "Welcome. Choose an option to take a turn",
+    "registro": "Register",
+    "salir": "Exit",
+    "seccionUsuarios": "User sections",
+    "solicitarTurno": "Request shift"
   }

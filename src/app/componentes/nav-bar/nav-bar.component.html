@@ -2,7 +2,7 @@
     <main>
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Third navbar example">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Bienvenido a TPClínica</a>
+                <a class="navbar-brand" href="#">{{ 'bienvenido' | translate }}</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -12,47 +12,46 @@
                 <div class="collapse navbar-collapse" id="navbarsExample03">
                     <ul class="navbar-nav me-auto mb-2 mb-sm-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" routerLink="home">Home</a>
+                            <a class="nav-link active" aria-current="page" routerLink="home">{{ 'inicio' | translate }}</a>
                         </li>
                         <li class="nav-item">
-                            <a *ngIf="!isLogged" class="nav-link" routerLink="login">Ingresar</a>
+                            <a *ngIf="!isLogged" class="nav-link" routerLink="login">{{ 'ingresar' | translate }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" routerLink="registro">Registro</a>
+                            <a class="nav-link" routerLink="registro">{{ 'registro' | translate }}</a>
                         </li>
                         <li class="nav-item">
-                            <a *ngIf="isLogged" class="nav-link" routerLink="mi-perfil">Mi perfil</a>
+                            <a *ngIf="isLogged" class="nav-link" routerLink="mi-perfil">{{ 'miPerfil' | translate }}</a>
                         </li>
                         <li class="nav-item">
-                            <a *ngIf="esAdmin" class="nav-link" routerLink="seccion-usuarios">Sección usuarios</a>
+                            <a *ngIf="esAdmin" class="nav-link" routerLink="seccion-usuarios">{{ 'seccionUsuarios' | translate }}</a>
                         </li>
                         <li class="nav-item">
-                            <a *ngIf="esEspec" class="nav-link" routerLink="pacientes">Mis pacientes</a>
+                            <a *ngIf="esEspec" class="nav-link" routerLink="pacientes">{{ 'misPacientes' | translate }}</a>
                         </li>
                         <li class="nav-item">
-                            <a *ngIf="esAdmin" class="nav-link" routerLink="turnos">Administración de turnos</a>
+                            <a *ngIf="esAdmin" class="nav-link" routerLink="turnos">{{ 'administracionTurnos' | translate }}</a>
                         </li>
                         <li class="nav-item">
-                            <a *ngIf="esPac || esEspec" class="nav-link" routerLink="mis-turnos">Mis turnos</a>
+                            <a *ngIf="esPac || esEspec" class="nav-link" routerLink="mis-turnos">{{ 'misTurnos' | translate }}</a>
                         </li>
                         <li class="nav-item">
-                            <a *ngIf="esPac || esAdmin" class="nav-link" routerLink="solicitar-turno">Solicitar
-                                turno</a>
+                            <a *ngIf="esPac || esAdmin" class="nav-link" routerLink="solicitar-turno">{{ 'solicitarTurno' | translate }}</a>
                         </li>
                         <li class="nav-item">
-                            <a *ngIf="esAdmin" class="nav-link" routerLink="informes">Informes</a>
+                            <a *ngIf="esAdmin" class="nav-link" routerLink="informes">{{ 'informes' | translate }}</a>
                         </li>
                         <li class="nav-item">
-                            <a *ngIf="esPac || esEspec" class="nav-link" routerLink="encuestas">Encuestas</a>
+                            <a *ngIf="esPac || esEspec" class="nav-link" routerLink="encuestas">{{ 'encuestas' | translate }}</a>
                         </li>
                         <li class="nav-item">
-                            <a *ngIf="esPac || esEspec" class="nav-link" routerLink="comentarios">Comentarios</a>
+                            <a *ngIf="esPac || esEspec" class="nav-link" routerLink="comentarios">{{ 'comentarios' | translate }}</a>
                         </li>
-                        <li class="nav-item">
+                        <!--<li class="nav-item">
                             <a *ngIf="isLogged" class="nav-link" routerLink="idiomas">Idiomas</a>
-                        </li>
+                        </li>-->
                         <li class="nav-item">
-                            <a *ngIf="isLogged" class="nav-link" (click)="logOut()">Salir</a>
+                            <a *ngIf="isLogged" class="nav-link" (click)="logOut()">{{ 'salir' | translate }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active"

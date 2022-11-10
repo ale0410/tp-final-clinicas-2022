@@ -6,14 +6,15 @@
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
         <main class="px-3">
             <br><br>
-            <h1>Bienvenido</h1>
-            <h2>Elija una opción, estoy seguro de que necesita turno..</h2>
+            <app-translation>
+
+            </app-translation>
             <br><br><br>
             <p class="lead">
-                <a *ngIf="!isLogged" href="login" class="btn btn-lg btn-primary ">Ingresar</a>
-                <a href="registro" class="btn btn-lg btn-primary">Registro</a>
-                <a *ngIf="esAdmin" class="btn btn-lg btn-primary" href="seccion-usuarios">Sección Usuarios</a>
-                <a *ngIf="esAdmin" class="btn btn-lg btn-primary" href="turnos">Administración de turnos</a>
+                <a *ngIf="!isLogged" href="login" class="btn btn-lg btn-primary ">{{ 'ingresar' | translate }}</a>
+                <a href="registro" class="btn btn-lg btn-primary">{{ 'registro' | translate }}</a>
+                <a *ngIf="esAdmin" class="btn btn-lg btn-primary" href="seccion-usuarios">{{ 'seccionUsuarios' | translate }}</a>
+                <a *ngIf="esAdmin" class="btn btn-lg btn-primary" href="turnos">{{ 'administracionTurnos' | translate }}</a>
             </p>
         </main>
 
