@@ -7,27 +7,27 @@
 
     <div class="miclase" *ngIf="!isUserPanel">
       <a rounded=true class="btn btn-lg btn-primary btn-paciente" type="submit" href="registro/paciente">
-        <h1>Registrar Paciente</h1>
+        <h1>{{ 'registrar paciente' | translate }}</h1>
       </a>
 
       <a rounded=true class="btn btn-lg btn-primary btn-especialista" type="submit" href="registro/especialista">
-        <h1>Registrar Especialista</h1>
+        <h1>{{ 'registrar especialista' | translate }}</h1>
       </a>
 
     </div>
 
     <div *ngIf="isUserPanel">
       <button class="btn btn-md btn-primary " type="submit" (click)="registrarPaciente()">
-        Registrar Paciente
+        {{ 'registrar paciente' | translate }}
       </button>
 
       <button class="btn btn-md btn-primary " type="submit" (click)="registrarEspecialista()">
-        Registrar Especialista
+        {{ 'registrar especialista' | translate }}
       </button>
 
 
       <button class="btn btn-md btn-primary" type="submit" (click)="registrarAdministrador()">
-        Registrar Administrador
+        {{ 'registrar administrador' | translate }}
       </button>
 
     </div>

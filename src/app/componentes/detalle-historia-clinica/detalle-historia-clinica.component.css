@@ -4,6 +4,10 @@ td {
     border: 1px solid black;
 }
 
+table{
+    background-color: rgb(217, 210, 210);
+}
+
 img {
     display: inline;
     width: 100px;

@@ -1,8 +1,8 @@
 <div class="contenedor">
     <h1>{{ 'principal.texto' | translate }}</h1>
     <div class="contenedor-botones">
-      <button [ngClass]="{'active': activeLang == 'es'}" (click)="cambiarLenguaje('es')">Español</button>
-      <button [ngClass]="{'active': activeLang == 'en'}" (click)="cambiarLenguaje('en')">Inglés</button>
-      <button [ngClass]="{'active': activeLang == 'po'}" (click)="cambiarLenguaje('po')">Portugues</button>
+      <button [ngClass]="{'active': activeLang == 'es'}" (click)="cambiarLenguaje('es')"><h2>{{ 'español' | translate }}</h2></button>
+      <button [ngClass]="{'active': activeLang == 'en'}" (click)="cambiarLenguaje('en')"><h2>{{ 'ingles' | translate }}</h2></button>
+      <button [ngClass]="{'active': activeLang == 'po'}" (click)="cambiarLenguaje('po')"><h2>{{ 'portugues' | translate }}</h2></button>
     </div>
   </div>

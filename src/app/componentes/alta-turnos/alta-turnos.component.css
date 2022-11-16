@@ -1,3 +1,12 @@
 .container {
     max-width: 960px;
   }
+
+  body {
+    display: flex;
+    align-items: center;
+    background-color: rgb(243, 213, 123);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  } 

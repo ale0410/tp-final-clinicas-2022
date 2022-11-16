@@ -25,12 +25,15 @@
        <select [(ngModel)]="insumosHospitalR" class="form-control" style="width: 12rem;" (change)="carg3()">
            <option [value]="item" *ngFor="let item of insumosHospital">{{item}}</option>
        </select>  
-       </div>  
+       </div>
+       
+       <app-comentario></app-comentario>
 
        <button class="btn btn-success" (click)="subirEncuesta()">Finalizar >>>>></button>
+
    </div>
 
-   <div *ngIf="hayEncu">
+   <div *ngIf="!hayEncu">
        <h2>Esta encuesta ya fue respondida.</h2>
        <button class="btn btn-success" (click)="seguir()">Finalizar >>>>></button>
    </div>

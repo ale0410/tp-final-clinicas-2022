@@ -5,6 +5,7 @@
   html,
   body {
     height: 91vh !important;
+    background-color: rgb(243, 213, 123);
   }
   
   img {
@@ -13,3 +14,4 @@
     height: 100px;
     object-fit: scale-down;
   }
+

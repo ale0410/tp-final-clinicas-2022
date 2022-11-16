@@ -2,57 +2,54 @@
 <html lang="en">
 
 <body class="bg-light">
+    
+    <app-translation>
+
+    </app-translation>
+
     <div class="container">
 
         <form [formGroup]="formAltaAdministrador" (ngSubmit)="signUp()">
             <!-- <div class="col-md-12 col-lg-12"> -->
-            <h4 class="mb-3">Alta Administrador</h4>
+            <h4 class="mb-3">{{ 'alta administrador' | translate }}</h4>
             <div class="form-group">
                 <div class="row g-3">
                     <div class="col-sm-6">
-                        <label for="firstName">Nombre</label>
+                        <label for="firstName">{{ 'nombre' | translate }}</label>
                         <input type="text" class="form-control" formControlName="nombre" placeholder="">
                         <span class="text-danger"
-                            *ngIf="formAltaAdministrador.get('nombre')?.hasError('required') && formAltaAdministrador.get('nombre')?.touched">Debe
-                            completar
-                            con su nombre.</span>
+                            *ngIf="formAltaAdministrador.get('nombre')?.hasError('required') && formAltaAdministrador.get('nombre')?.touched">{{ 'sin nombre' | translate }}</span>
                     </div>
 
                     <div class="col-sm-6">
-                        <label for="firstName">Apellido</label>
+                        <label for="firstName">{{ 'apellido' | translate }}</label>
                         <input type="text" class="form-control" formControlName="apellido" placeholder="">
                         <span class="text-danger"
-                            *ngIf="formAltaAdministrador.get('apellido')?.hasError('required') && formAltaAdministrador.get('apellido')?.touched">Debe
-                            completar
-                            con su apellido.</span>
+                            *ngIf="formAltaAdministrador.get('apellido')?.hasError('required') && formAltaAdministrador.get('apellido')?.touched">{{ 'sin apellido' | translate }}</span>
                     </div>
                     <div class="col-sm-6">
-                        <label for="dni">DNI</label>
+                        <label for="dni">{{ 'dni' | translate }}</label>
                         <input type="number" class="form-control" formControlName="dni" placeholder="">
                         <span class="text-danger"
-                            *ngIf="formAltaAdministrador.get('dni')?.hasError('required') && formAltaAdministrador.get('dni')?.touched">Debe
-                            completar
-                            con su dni.</span>
+                            *ngIf="formAltaAdministrador.get('dni')?.hasError('required') && formAltaAdministrador.get('dni')?.touched">{{ 'sin dni' | translate }}</span>
                     </div>
                     <div class="col-sm-6">
-                        <label for="edad">Edad</label>
+                        <label for="edad">{{ 'edad' | translate }}</label>
                         <input type="number" class="form-control" formControlName="edad" placeholder="">
                         <span class="text-danger"
-                            *ngIf="formAltaAdministrador.get('edad')?.hasError('required') && formAltaAdministrador.get('edad')?.touched">Debe
-                            completar con su edad.</span>
+                            *ngIf="formAltaAdministrador.get('edad')?.hasError('required') && formAltaAdministrador.get('edad')?.touched">{{ 'sin edad' | translate }}</span>
                     </div>
                 </div>
 
                 <div class="my-3">
                     <div class="row">
                         <div class="col-sm-6">
-                            <label for="photo">Foto de perfil</label>
+                            <label for="photo">{{ 'foto de perfil' | translate }}</label>
                             <br>
                             <input type="file" name="file" class="form-control" formControlName="foto"
                                 (input)="onFileChanged($event)" accept=".jpeg,.jpg,.png,.svg" />
                             <span class="text-danger"
-                                *ngIf="formAltaAdministrador.get('foto')?.hasError('required') && formAltaAdministrador.get('foto')?.touched">Debe
-                                subir foto de perfil.</span>
+                                *ngIf="formAltaAdministrador.get('foto')?.hasError('required') && formAltaAdministrador.get('foto')?.touched">{{ 'sin foto' | translate }}</span>
                         </div>
 
                         <br />
@@ -64,28 +61,23 @@
 
                     <div class="row">
                         <div class="col-sm-6">
-                            <label for="mail">Mail</label>
+                            <label for="mail">{{ 'mail' | translate }}</label>
                             <input type="email" class="form-control" formControlName="mail" placeholder="">
                             <span class="text-danger"
-                                *ngIf="formAltaAdministrador.get('mail')?.hasError('required') && formAltaAdministrador.get('mail')?.touched">Debe
-                                completar
-                                con su mail.</span>
+                                *ngIf="formAltaAdministrador.get('mail')?.hasError('required') && formAltaAdministrador.get('mail')?.touched">{{ 'sin mail' | translate }}</span>
                         </div>
 
                         <div class="col-sm-6">
-                            <label for="password">Password</label>
+                            <label for="password">{{ 'contraseña' | translate }}</label>
                             <input type="password" class="form-control" formControlName="password" placeholder="">
                             <span class="text-danger"
-                                *ngIf="formAltaAdministrador.get('password')?.hasError('required') && formAltaAdministrador.get('password')?.touched">Debe
-                                completar
-                                con su contraseña.</span>
+                                *ngIf="formAltaAdministrador.get('password')?.hasError('required') && formAltaAdministrador.get('password')?.touched">{{ 'sin contraseña' | translate }}</span>
                         </div>
                     </div>
                 </div>
 
                 <button class="btn btn-primary btn-md btn-block" [disabled]="formAltaAdministrador.invalid"
-                    type="submit">Cargar
-                    Administrador</button>
+                    type="submit">{{ 'cargar administrador' | translate }}</button>
             </div>
         </form>
     </div>

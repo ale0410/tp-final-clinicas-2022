@@ -24,3 +24,11 @@
     direction: rtl;/* right to left */
     unicode-bidi: bidi-override;/* bidi de bidireccional */
 }
+
+body{
+    align-items: center;
+    background-color: rgb(243, 213, 123);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
