@@ -4,7 +4,7 @@ export class Encuesta {
     regular:number;
     mala:number;
     muy_mala:number;
-    idTurno:any;
+    fecha:any;
 
     constructor(muyBueno:number, bueno:number, reg:number, mal:number, muyMal:number){
         this.muy_buena=muyBueno;

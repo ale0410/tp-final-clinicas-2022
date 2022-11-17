@@ -27,17 +27,17 @@ export class ComentarioComponent implements OnInit {
   radioV="Muy bueno";
   
 
-  id!:any;
+  fecha!:any;
 
   turno!:Turno;
 
   
 
   constructor(private router: Router, private tomarId:ActivatedRoute, private turnosS:TurnosService) { 
-    this.id = this.tomarId.snapshot.paramMap.get('idTurno');
+    this.fecha = this.tomarId.snapshot.paramMap.get('fecha');
     this.turnosS.devolverListadoTurnos().subscribe(lista=>{
       lista.filter(element=>{
-        if(element.id == this.id){
+        if(element.fecha == this.fecha){
           this.turno = element;
         }
       })
@@ -56,7 +56,7 @@ export class ComentarioComponent implements OnInit {
       //this.turnosS.actualizarTurno(this.turno, EstadoTurno.aceptado);
 
       
-      let e=new Comentario(this.rango1R, this.radioV, this.valoracionEstrellas, [this.chF, this.chA,this.chC], this.txtComentario, this.id);
+      let e=new Comentario(this.rango1R, this.radioV, this.valoracionEstrellas, [this.chF, this.chA,this.chC], this.txtComentario, this.fecha);
       
       this.turnosS.guardarComentario(e);
       alert("Gracias por su comentario.");

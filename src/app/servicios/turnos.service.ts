@@ -127,23 +127,22 @@ export class TurnosService {
   }   
 
   guardarEncuesta(encuesta: Encuesta) {
-    return this.firestore.collection("encuestas").add({
-      muyBuena: encuesta.muy_buena,
-      buena: encuesta.buena,
-      regular: encuesta.regular,
-      mala: encuesta.mala,
-      muyMala: encuesta.muy_mala,
+    return this.firestore.collection("encuestas-A").add({
+      condicionesPaciente: encuesta.muy_buena,
+      avanceHospital: encuesta.buena,
+      respiradoresHospital: encuesta.regular,
+      fecha: encuesta.mala,
+      encuesta: encuesta.muy_mala,
     });
   }   
 
   guardarComentario(comentario: Comentario) {
-    return this.firestore.collection("comentarios").add({
-      pregunta1: comentario.preg1,
-      pregunta2: comentario.preg2,
-      pregunta3: comentario.preg3,
-      pregunta4: comentario.preg4,
-      comentario: comentario.comentario,
-      idTurno: comentario.idTurno,
+    return this.firestore.collection("encuestas-B").add({
+      atencionProfesional: comentario.preg1,
+      infraestructuraHospital: comentario.preg2,
+      hospitalGlobal: comentario.preg3,
+      conocidosHospital: comentario.preg4,
+      comentario: comentario.comentario
     });
   }   
 
@@ -169,7 +168,7 @@ export class TurnosService {
         break;
     }
     
-    this.firestore.doc('turnos' + '/'+turnoA.id).update({...turnoA});    
+    this.firestore.doc('turnos' + '/'+turnoA.fecha).update({...turnoA});    
     
   }
 

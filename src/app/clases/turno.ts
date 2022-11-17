@@ -14,7 +14,6 @@ export class Turno {
     public encuesta: string;
     public calificacion: string;
     public resenia: string;
-    public id!:string;
     public encuestaRespondidaPaciente!:boolean;
     public encuestaRespondidaMedico!:boolean;
     public comentario!:any;
@@ -31,8 +30,6 @@ export class Turno {
         this.encuesta = encuesta;
         this.calificacion = calificacion;
         this.resenia = resenia;
-        this.encuestaRespondidaMedico = false;
-        this.encuestaRespondidaPaciente = false;
     }
 }
 

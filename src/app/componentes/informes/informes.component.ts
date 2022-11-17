@@ -6,6 +6,7 @@ import * as Highcharts from 'highcharts';
 import { TurnosService } from 'src/app/servicios/turnos.service';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { count } from 'console';
 
 @Component({
   selector: 'app-informes',
@@ -54,8 +55,8 @@ export class InformesComponent implements OnInit {
   }
 
   bajarTurnosPorEspecialidadPDF() {
-    let listaTurnos: any[] = [];
-    let arrayCantidadTurnosPorEspecialidad: any[][] = [];
+    let listaTurnos:any = [];
+    let arrayCantidadTurnosPorEspecialidad:any = [];
     let columnNames = [];
     let groupedArray = [];
     let turnosSubs = this.turnosService.getTurnos().subscribe(async (turnos: any) => {
@@ -63,14 +64,14 @@ export class InformesComponent implements OnInit {
         let turno = turnos[index].payload.doc.data();
         listaTurnos.push(turno);
       }
-      groupedArray = listaTurnos.reduce(function (r, a) {
+      groupedArray = listaTurnos.reduce(function (r:any, a:any) {
         r[a.especialidad] = r[a.especialidad] || [];
         r[a.especialidad].push(a);
         return r;
       }, Object.create(null));
 
       for (const [key, value] of Object.entries(groupedArray)) {
-        arrayCantidadTurnosPorEspecialidad.push([key, value])
+        arrayCantidadTurnosPorEspecialidad.push([key, length + 3])
         columnNames.push(key);
       }
 
@@ -98,11 +99,11 @@ export class InformesComponent implements OnInit {
 
       await new Promise(f => setTimeout(f, 1000));
 
-      let DATA = document.getElementById("container");
+      let DATA:any = document.getElementById("container");
 
-      DATA!.hidden = false;
+      DATA.hidden = false;
 
-      html2canvas(DATA!).then(canvas => {
+      html2canvas(DATA).then(canvas => {
 
         let fileWidth = 208;
         let fileHeight = canvas.height * fileWidth / canvas.width;
@@ -113,15 +114,15 @@ export class InformesComponent implements OnInit {
         PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight)
 
         PDF.save('Informe_Turnos_Por_Especialidad.pdf');
-        DATA!.hidden = true;
+        DATA.hidden = true;
       });
       turnosSubs.unsubscribe();
     });
   }
 
   bajarTurnosPorEspecialidadExcel() {
-    let listaTurnos: any[] = [];
-    let arrayCantidadTurnosPorEspecialidad: any[] = [];
+    let listaTurnos:any = [];
+    let arrayCantidadTurnosPorEspecialidad:any = [];
     let columnNames = [];
     let groupedArray = [];
     let turnosSubs = this.turnosService.getTurnos().subscribe((turnos: any) => {
@@ -129,14 +130,14 @@ export class InformesComponent implements OnInit {
         let turno = turnos[index].payload.doc.data();
         listaTurnos.push(turno);
       }
-      groupedArray = listaTurnos.reduce(function (r, a) {
+      groupedArray = listaTurnos.reduce(function (r:any, a:any) {
         r[a.especialidad] = r[a.especialidad] || [];
         r[a.especialidad].push(a);
         return r;
       }, Object.create(null));
 
       for (const [key, value] of Object.entries(groupedArray)) {
-        arrayCantidadTurnosPorEspecialidad.push([key, value])
+        arrayCantidadTurnosPorEspecialidad.push([key, length + 3])
       }
 
       var ws: XLSX.WorkSheet = XLSX.utils.aoa_to_sheet([
@@ -155,8 +156,8 @@ export class InformesComponent implements OnInit {
   }
 
   bajarTurnosPorDiaExcel() {
-    let listaTurnos: any[] = [];
-    let arrayCantidadTurnosPorDia: any[] = [];
+    let listaTurnos:any = [];
+    let arrayCantidadTurnosPorDia:any = [];
     let columnNames = [];
     let groupedArray = [];
     let turnosSubs = this.turnosService.getTurnos().subscribe((turnos: any) => {
@@ -164,15 +165,15 @@ export class InformesComponent implements OnInit {
         let turno = turnos[index].payload.doc.data();
         listaTurnos.push(turno);
       }
-      groupedArray = listaTurnos.reduce(function (r, a) {
+      groupedArray = listaTurnos.reduce(function (r:any, a:any) {
         r[new Date(a.fecha).toDateString()] = r[new Date(a.fecha).toDateString()] || [];
         r[new Date(a.fecha).toDateString()].push(a);
         return r;
       }, Object.create(null));
 
       for (const [key, value] of Object.entries(groupedArray)) {
-        arrayCantidadTurnosPorDia.push([key, value])
-        columnNames.push(key);
+        arrayCantidadTurnosPorDia.push([key, length + 4])
+        columnNames.push(key, value);
       }
 
       var ws: XLSX.WorkSheet = XLSX.utils.aoa_to_sheet([
@@ -191,8 +192,8 @@ export class InformesComponent implements OnInit {
   }
 
   bajarTurnosPorLapsoSeleccionadoExcel() {
-    let listaTurnos: any[] = [];
-    let arrayCantidadTurnosPorLapso: any[] = [];
+    let listaTurnos:any = [];
+    let arrayCantidadTurnosPorLapso:any = [];
     let columnNames = [];
     let groupedArray = [];
     let turnosSubs = this.turnosService.getTurnos().subscribe((turnos: any) => {
@@ -206,15 +207,15 @@ export class InformesComponent implements OnInit {
           this.withoutTime(new Date(turno.fecha)).getTime() <= new Date(this.fechaFin).getTime() + this.localOffsetMillis;
       });
 
-      groupedArray = listaTurnos.reduce(function (r, a) {
+      groupedArray = listaTurnos.reduce(function (r:any, a:any) {
         r[a.especialistaNombre] = r[a.especialistaNombre] || [];
         r[a.especialistaNombre].push(a);
         return r;
       }, Object.create(null));
 
       for (const [key, value] of Object.entries(groupedArray)) {
-        arrayCantidadTurnosPorLapso.push([key, value])
-        columnNames.push(key);
+        arrayCantidadTurnosPorLapso.push([key, length + 3])
+        columnNames.push(key,value);
       }
 
       var ws: XLSX.WorkSheet = XLSX.utils.aoa_to_sheet([["Lapso: " + this.fechaInicio + ' al ' + this.fechaFin],
@@ -234,8 +235,8 @@ export class InformesComponent implements OnInit {
   }
 
   bajarTurnosFinalizadosPorLapsoSeleccionadoExcel() {
-    let listaTurnos: any[] = [];
-    let arrayCantidadTurnosPorLapso: any[] = [];
+    let listaTurnos:any = [];
+    let arrayCantidadTurnosPorLapso:any = [];
     let columnNames = [];
     let groupedArray = [];
     let turnosSubs = this.turnosService.getTurnosFinalizados().subscribe((turnos: any) => {
@@ -249,15 +250,15 @@ export class InformesComponent implements OnInit {
           this.withoutTime(new Date(turno.fecha)).getTime() <= new Date(this.fechaFin).getTime() + this.localOffsetMillis;
       });
 
-      groupedArray = listaTurnos.reduce(function (r, a) {
+      groupedArray = listaTurnos.reduce(function (r:any, a:any) {
         r[a.especialistaNombre] = r[a.especialistaNombre] || [];
         r[a.especialistaNombre].push(a);
         return r;
       }, Object.create(null));
 
       for (const [key, value] of Object.entries(groupedArray)) {
-        arrayCantidadTurnosPorLapso.push([key, value])
-        columnNames.push(key);
+        arrayCantidadTurnosPorLapso.push([key, length + 2])
+        columnNames.push(key, value);
       }
 
       var ws: XLSX.WorkSheet = XLSX.utils.aoa_to_sheet([["Lapso: " + this.fechaInicio + ' al ' + this.fechaFin],
@@ -279,9 +280,9 @@ export class InformesComponent implements OnInit {
 
   bajarTurnosPorDiaPDF() {
 
-    let listaTurnos: any[] = [];
-    let arrayCantidadTurnosPorDia: any[][] = [];
-    let columnNames: string[] = [];
+    let listaTurnos:any = [];
+    let arrayCantidadTurnosPorDia:any = [];
+    let columnNames:any = [];
     let groupedArray = [];
     let turnosSubs = this.turnosService.getTurnos().subscribe(async (turnos: any) => {
       for (let index = 0; index < turnos.length; index++) {
@@ -289,17 +290,17 @@ export class InformesComponent implements OnInit {
         listaTurnos.push(turno);
       }
 
-      listaTurnos.sort((val1, val2) => { return new Date(val1.fecha).getTime() - new Date(val2.fecha).getTime() })
+      listaTurnos.sort((val1:any, val2:any) => { return new Date(val1.fecha).getTime() - new Date(val2.fecha).getTime() })
 
 
-      groupedArray = listaTurnos.reduce(function (r, a) {
+      groupedArray = listaTurnos.reduce(function (r:any, a:any) {
         r[new Date(a.fecha).toDateString()] = r[new Date(a.fecha).toDateString()] || [];
         r[new Date(a.fecha).toDateString()].push(a);
         return r;
       }, Object.create(null));
 
       for (const [key, value] of Object.entries(groupedArray)) {
-        arrayCantidadTurnosPorDia.push([key, value])
+        arrayCantidadTurnosPorDia.push([key, length + 2])
         columnNames.push(key);
       };
 
@@ -345,11 +346,11 @@ export class InformesComponent implements OnInit {
 
       await new Promise(f => setTimeout(f, 1000));
 
-      let DATA = document.getElementById("container");
+      let DATA:any = document.getElementById("container");
 
-      DATA!.hidden = false;
+      DATA.hidden = false;
 
-      html2canvas(DATA!).then(canvas => {
+      html2canvas(DATA).then(canvas => {
 
         let fileWidth = 208;
         let fileHeight = canvas.height * fileWidth / canvas.width;
@@ -361,15 +362,15 @@ export class InformesComponent implements OnInit {
 
         PDF.save('Informe_Turnos_Por_Dia.pdf');
       });
-      DATA!.hidden = true;
+      DATA.hidden = true;
       turnosSubs.unsubscribe();
     });
   }
 
   bajarTurnosPorLapsoSeleccionadoPDF() {
-    let listaTurnos: any[] = [];
-    let arrayCantidadTurnosPorLapso: any[][] = [];
-    let columnNames: string[] = [];
+    let listaTurnos:any = [];
+    let arrayCantidadTurnosPorLapso:any = [];
+    let columnNames:any = [];
     let groupedArray = [];
     let turnosSubs = this.turnosService.getTurnos().subscribe(async (turnos: any) => {
       for (let index = 0; index < turnos.length; index++) {
@@ -382,14 +383,14 @@ export class InformesComponent implements OnInit {
           this.withoutTime(new Date(turno.fecha)).getTime() <= new Date(this.fechaFin).getTime() + this.localOffsetMillis;
       });
 
-      groupedArray = listaTurnos.reduce(function (r, a) {
+      groupedArray = listaTurnos.reduce(function (r:any, a:any) {
         r[a.especialistaNombre] = r[a.especialistaNombre] || [];
         r[a.especialistaNombre].push(a);
         return r;
       }, Object.create(null));
 
       for (const [key, value] of Object.entries(groupedArray)) {
-        arrayCantidadTurnosPorLapso.push([key, value])
+        arrayCantidadTurnosPorLapso.push([key, length + 2])
         columnNames.push(key);
       }
 
@@ -421,10 +422,10 @@ export class InformesComponent implements OnInit {
 
       await new Promise(f => setTimeout(f, 1000));
 
-      let DATA = document.getElementById("container");
-      DATA!.hidden = false;
+      let DATA:any = document.getElementById("container");
+      DATA.hidden = false;
 
-      html2canvas(DATA!).then(canvas => {
+      html2canvas(DATA).then(canvas => {
 
         let fileWidth = 208;
         let fileHeight = canvas.height * fileWidth / canvas.width;
@@ -436,7 +437,7 @@ export class InformesComponent implements OnInit {
 
         PDF.save('Informe_Turnos_Por_Lapso.pdf');
       });
-      DATA!.hidden = true;
+      DATA.hidden = true;
 
       turnosSubs.unsubscribe();
     });
@@ -444,9 +445,9 @@ export class InformesComponent implements OnInit {
 
   bajarTurnosFinalizadosPorLapsoSeleccionadoPDF() {
 
-    let listaTurnos: any[] = [];
-    let arrayCantidadTurnosPorLapso: any[][] = [];
-    let columnNames: string[] = [];
+    let listaTurnos:any = [];
+    let arrayCantidadTurnosPorLapso:any = [];
+    let columnNames:any = [];
     let groupedArray = [];
     let turnosSubs = this.turnosService.getTurnosFinalizados().subscribe(async (turnos: any) => {
       for (let index = 0; index < turnos.length; index++) {
@@ -459,14 +460,14 @@ export class InformesComponent implements OnInit {
           this.withoutTime(new Date(turno.fecha)).getTime() <= new Date(this.fechaFin).getTime() + this.localOffsetMillis;
       });
 
-      groupedArray = listaTurnos.reduce(function (r, a) {
+      groupedArray = listaTurnos.reduce(function (r:any, a:any) {
         r[a.especialistaNombre] = r[a.especialistaNombre] || [];
         r[a.especialistaNombre].push(a);
         return r;
       }, Object.create(null));
 
       for (const [key, value] of Object.entries(groupedArray)) {
-        arrayCantidadTurnosPorLapso.push([key, value])
+        arrayCantidadTurnosPorLapso.push([key, length + 3])
         columnNames.push(key);
       }
 
@@ -498,10 +499,10 @@ export class InformesComponent implements OnInit {
 
       await new Promise(f => setTimeout(f, 1000));
 
-      let DATA = document.getElementById("container");
-      DATA!.hidden = false;
+      let DATA:any = document.getElementById("container");
+      DATA.hidden = false;
 
-      html2canvas(DATA!).then(canvas => {
+      html2canvas(DATA).then(canvas => {
 
         let fileWidth = 208;
         let fileHeight = canvas.height * fileWidth / canvas.width;
@@ -513,7 +514,7 @@ export class InformesComponent implements OnInit {
 
         PDF.save('Informe_Turnos_Finalizados_Por_Lapso.pdf');
       });
-      DATA!.hidden = true;
+      DATA.hidden = true;
 
       turnosSubs.unsubscribe();
     });

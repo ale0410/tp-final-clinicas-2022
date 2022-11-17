@@ -28,7 +28,7 @@ export class EncuestaComponent implements OnInit {
 
   turnoEncuestado: any;
 
-  id!:any;
+  fecha!:any;
 
   cargo=false;
   hayEncu=false;
@@ -37,12 +37,12 @@ export class EncuestaComponent implements OnInit {
   mensaje="";
   color!:string;
 
-  constructor(private router: Router, private tomarId:ActivatedRoute, private turnosS:TurnosService) { 
-    this.id = this.tomarId.snapshot.paramMap.get('idTurno');
+  constructor(private router: Router, private tomarFecha:ActivatedRoute, private turnosS:TurnosService) { 
+    this.fecha = this.tomarFecha.snapshot.paramMap.get('fecha');
     
     this.turnosS.devolverListadoEncuestas().subscribe(lista=>{
       lista.filter(element=>{
-        if(element.idTurno == this.id){
+        if(element.fecha == this.fecha){
           this.hayEncu=true;
         }
       })
@@ -50,7 +50,7 @@ export class EncuestaComponent implements OnInit {
       if(this.hayEncu==false){
         this.turnosS.devolverListadoTurnos().subscribe(listaT=>{
           listaT.filter(elementT=>{
-            if(elementT.id==this.id)
+            if(elementT.fecha==this.fecha)
             this.turno=elementT;
           })
           this.cargo=true;
@@ -81,10 +81,9 @@ export class EncuestaComponent implements OnInit {
 
   subirEncuesta(){  
     if(this.v1==true && this.v2==true && this.v3==true){
-      let encu=new Encuesta(this.condicionesPacienteR, this.insumosHospitalR, this.infraestructuraHospitalR, this.id, 0);      
+
+      let encu=new Encuesta(this.condicionesPacienteR, this.insumosHospitalR, this.infraestructuraHospitalR, this.fecha, 1);      
       
-      //this.turno.encuestaRespondidaMedico=true;
-      //this.turnosS.actualizarTurno(this.turno, EstadoTurno.aceptado);
       this.turnosS.guardarEncuesta(encu);
       this.mensaje="Gracias por responder";  
       this.color="alert-success";
